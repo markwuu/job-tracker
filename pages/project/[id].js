@@ -2,9 +2,9 @@ import { useRouter } from 'next/router'
 
 const Project = () => {
   const router = useRouter()
-  const { pid } = router.query
+  const { id } = router.query
 
-  return <p>Project: {pid}</p>
+  return <p>Project: {id}</p>
 }
 
 export default Project

@@ -2,9 +2,9 @@ import { useRouter } from 'next/router'
 
 const Job = () => {
   const router = useRouter()
-  const { pid } = router.query
+  const { id } = router.query
 
-  return <p>Job: {pid}</p>
+  return <p>Job: {id}</p>
 }
 
 export default Job

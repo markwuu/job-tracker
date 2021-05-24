@@ -21,7 +21,7 @@ export default function Home() {
           </Link>
         </li>
         <li>
-          <Link href="/job/better-health">
+          <Link href="/job">
             <a>Job: Better Health</a>
           </Link>
         </li>

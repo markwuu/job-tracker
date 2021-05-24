@@ -2,9 +2,9 @@ import { useRouter } from 'next/router'
 
 const Algorithm = () => {
   const router = useRouter()
-  const { pid } = router.query
+  const { id } = router.query
 
-  return <p>Algorithm: {pid}</p>
+  return <p>Algorithm: {id}</p>
 }
 
 export default Algorithm
