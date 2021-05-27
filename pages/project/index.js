@@ -11,14 +11,13 @@ export default function Projects() {
       const json = await res.json();
 
       if(json.data) {
-        // console.log('json', json);
+        console.log('json', json.data);
         // setProjects(json.data);
 
-        const projectTitles = json.data.map((project) => {
-          return project.title;
+        const projectTitles = json.data.map(({title, description, status}) => {
+          return { title, description, status};
         })
 
-        console.log('projectTitles', projectTitles)
         setProjects(projectTitles)
       }
     }
@@ -42,9 +41,13 @@ export default function Projects() {
     <main>
       <h1>Private Projects Overview Page</h1>
       <p>
-        {projects.map(project => {
+        {projects.map((project, i) => {
           return (
-            <li>{project}</li>
+            <div style={{border:'1px solid black', margin: '25px'}} key={i}>
+              <p>{project.title}</p>
+              <p>{project.description}</p>
+              <p>{project.status}</p>
+            </div>
           )
         })}
       </p>
