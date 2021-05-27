@@ -1,5 +1,7 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+import Adapters from "next-auth/adapters"
+import Models from "../../../models"
 
 const options = {
     providers: [
@@ -22,8 +24,24 @@ const options = {
             },
             from: process.env.EMAIL_FROM,
         })
-      ],
-      database: process.env.MONGODB_URL
+    ],
+    database: process.env.MONGODB_URL,
+    callbacks: {
+      session: async (session, user) => {
+        session.userId = user.id;
+        return Promise.resolve(session);
+      }
+    },
+    adapter: Adapters.TypeORM.Adapter(
+      // The first argument should be a database connection string or TypeORM config object
+      process.env.MONGODB_URL,
+      // The second argument can be used to pass custom models and schemas
+      {
+        models: {
+          User: Models.User,
+        },
+      }
+    ),
 }
 
 export default (req, res) => NextAuth(req, res, options);
