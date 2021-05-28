@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSession } from "next-auth/client";
+import Link from "next/link";
 
 export default function Projects() {
   const [session, loading] = useSession();
@@ -29,28 +30,25 @@ export default function Projects() {
 
   if(!session) {
     return (
-      <main>
-        <div>
-          <h1>You arent signed in, please sign in first</h1>
-        </div>
-      </main>
+      <>
+        <h1>You arent signed in, please sign in first</h1>
+      </>
     )
   }
 
   return (
-    <main>
+    <>
       <h1>Private Projects Overview Page</h1>
-      <p>
         {projects.map((project, i) => {
+          const link = `/project/${(project.title).replace(" ","-")}`;
           return (
             <div style={{border:'1px solid black', margin: '25px'}} key={i}>
-              <p>{project.title}</p>
+              <p><Link href={link}>{project.title}</Link></p>
               <p>{project.description}</p>
               <p>{project.status}</p>
             </div>
           )
         })}
-      </p>
-    </main>
+    </>
   )
 }
