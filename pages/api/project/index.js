@@ -18,14 +18,15 @@ export default async (req, res) => {
             .toArray();
         console.log('users', users);
 
-        //create project
-        // const project = await db
+        // create project
+        // const newProject = await db
         //     .collection("projects")
         //     .insertOne({
         //         _user: userId,
-        //         title: "test title 2",
-        //         description: "test description 2",
-        //         status: "incomplete"
+        //         title: "Painting Application",
+        //         slugTitle: "painting-application",
+        //         description: "A painting application for you creatives",
+        //         status: "complete"
         //     })
 
         //get projects

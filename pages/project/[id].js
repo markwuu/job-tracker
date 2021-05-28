@@ -1,10 +1,48 @@
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
+import { useSession } from "next-auth/client";
 
 const Project = () => {
   const router = useRouter()
   const { id } = router.query
+  const [session, loading] = useSession();
+  const emptyProject = {title: '', description: '', status: ''};
+  const [project, setProject] = useState(emptyProject);
 
-  return <p>Project: {id}</p>
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`/api/project/${id}`);
+      const json = await res.json();
+
+      if(json.data) {
+        setProject(json.data[0])
+      }
+    }
+
+    fetchData();
+  }, [session, id, setProject]);
+
+  if( typeof window !== "undefined" && loading) return null;
+
+  if(!session) {
+    return (
+      <>
+        <h1>You arent signed in, please sign in first</h1>
+      </>
+    )
+  }
+
+  return (
+    <>
+      <h1>{project && project.title ? project.title : `No project found with title ${id}`}</h1>
+      <p>{project && project.description ? project.description : ''}</p>
+      {
+        project && project.status ? (
+          <p>{project.status === 'incomplete' ? 'Not finished' : 'Finished'}</p>
+        ) : ''
+      }
+    </>
+  )
 }
 
 export default Project
