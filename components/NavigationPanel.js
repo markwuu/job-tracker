@@ -32,17 +32,17 @@ export default function NavigationPanel() {
           </Link>
         </Panel>
         <Panel>
-          <Link href="/algorithm">
+          <Link href="/algorithms">
             <a>Algorithms</a>
           </Link>
         </Panel>
         <Panel>
-          <Link href="/job">
+          <Link href="/jobs">
             <a>Jobs</a>
           </Link>
         </Panel>
         <Panel>
-          <Link href="/project">
+          <Link href="/projects">
             <a>Projects</a>
           </Link>
         </Panel>
