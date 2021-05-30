@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const NavigationContainer = styled.div`
   border: 1px solid black;
-  width: 20vw;
+  min-width: 225px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,9 @@ const SettingsPanel = styled.div`
 export default function NavigationPanel() {
   return (
     <NavigationContainer>
-        <Panel>Job Tracker</Panel>
+        <Panel>
+          Job Tracker
+        </Panel>
         <Panel>
           <Link href="/">
             <a>Dashboard</a>

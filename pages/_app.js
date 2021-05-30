@@ -1,26 +1,39 @@
 import '../styles/globals.css'
 import { Provider } from "next-auth/client";
 import NavigationPanel from '../components/NavigationPanel';
-// import { signIn, signOut, useSession } from "next-auth/client";
 import NavigationTopBar from '../components/NavigationTopBar';
+import styled from "styled-components";
+
+const PageContainer = styled.div`
+  display: flex;
+`;
+
+const NavTopPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  height: 100vh;
+  width: 100vw;
+`;
+
+const NextPageContainer = styled.div`
+  border: 1px solid black;
+  height: 90vh;
+`;
 
 function MyApp({ Component, pageProps }) {
-  // const [session, loading] = useSession();
-  // console.log('session', session);
 
   return (
     <Provider session={pageProps.session}>
-      <div style={{display: 'flex'}}>
+      <PageContainer>
         <NavigationPanel/>
-
-        <div style={{display: 'flex', flexDirection: 'column'}}>
-          <NavigationTopBar {...pageProps} />
-          <div style={{border: '1px solid black', width: '80vw', height: '90vh'}}>
+        <NavTopPageContainer>
+          <NavigationTopBar {...pageProps}/>
+          <NextPageContainer>
             <Component />
-          </div>
-        </div>
-
-      </div>
+          </NextPageContainer>
+        </NavTopPageContainer>
+      </PageContainer>
     </Provider>
   );
 }
