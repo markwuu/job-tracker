@@ -58,9 +58,6 @@ const SettingsPanel = styled.div`
 `;
 
 export default function NavigationPanel({page}) {
-  console.log('🚀 => page', page); //home
-  if(page === 'home') {}
-
 
   return (
     <NavigationContainer>
