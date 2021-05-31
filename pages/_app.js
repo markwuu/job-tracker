@@ -22,8 +22,6 @@ const NextPageContainer = styled.div`
 `;
 
 function MyApp({ Component, pageProps }) {
-console.log('🚀 => pageProps', pageProps);
-console.log('🚀 => Component', Component);
 
   return (
     <Provider session={pageProps.session}>

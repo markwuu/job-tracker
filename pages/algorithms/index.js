@@ -32,7 +32,7 @@ export default function Algorithms() {
   }
 
   return (
-    <Layout>
+    <Layout page={'algorithms'}>
       <h1>Private Algorithms Overview Page</h1>
       <p>
         {content}

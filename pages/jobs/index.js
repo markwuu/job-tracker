@@ -32,7 +32,7 @@ export default function Jobs() {
   }
 
   return (
-    <Layout>
+    <Layout page={'jobs'}>
       <h1>Private Jobs Overview Page</h1>
       <p>
         {content}

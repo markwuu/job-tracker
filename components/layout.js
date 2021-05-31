@@ -19,12 +19,11 @@ const NextPageContainer = styled.div`
   height: 90vh;
 `;
 
-export default function Layout({ children }) {
-    console.log('children', children);
+export default function Layout({ page, children }) {
 
     return (
       <PageContainer>
-        <NavigationPanel/>
+        <NavigationPanel page={page}/>
         <NavTopPageContainer>
           <NavigationTopBar/>
           <NextPageContainer>

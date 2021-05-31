@@ -34,7 +34,7 @@ const Project = () => {
   }
 
   return (
-    <Layout>
+    <Layout page={'projects'}>
       <h1>{project && project.title ? project.title : `No project found with title ${id}`}</h1>
       <p>{project && project.description ? project.description : ''}</p>
       {

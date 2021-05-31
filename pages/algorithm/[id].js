@@ -5,7 +5,7 @@ const Algorithm = () => {
   const router = useRouter()
   const { id } = router.query
 
-  return <Layout>Algorithm: {id}</Layout>
+  return <Layout page={'algorithms'}>Algorithm: {id}</Layout>
 }
 
 export default Algorithm

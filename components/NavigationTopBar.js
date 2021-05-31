@@ -8,7 +8,6 @@ const SignInContainer = styled.div`
 
 export default function NavigationTopBar() {
     const [session, loading] = useSession();
-    console.log('session', session);
 
     return (
       <SignInContainer>

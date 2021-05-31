@@ -17,7 +17,7 @@ export default function Settings() {
   }
 
   return (
-    <Layout>
+    <Layout page={'settings'}>
       <h1>Settings Page</h1>
     </Layout>
   )

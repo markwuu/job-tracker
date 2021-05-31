@@ -35,7 +35,7 @@ export default function Projects() {
   }
 
   return (
-    <Layout>
+    <Layout page={'projects'}>
       <h1>Private Projects Overview Page</h1>
         {projects.map((project, i) => {
           const link = `/project/${(project.title).replace(" ","-").toLowerCase()}`;

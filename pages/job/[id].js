@@ -6,7 +6,7 @@ const Job = () => {
   const { id } = router.query
 
   return (
-    <Layout>
+    <Layout page={'jobs'}>
       <h1>Job: {id}</h1>
     </Layout>
   )

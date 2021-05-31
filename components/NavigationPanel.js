@@ -7,6 +7,7 @@ const NavigationContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: #F8F8FA;
+  box-shadow: inset 0px 0px 10px #d1bbbb;
 `;
 
 const Panel = styled.div`
@@ -23,9 +24,22 @@ const LogoPanel = styled.div`
   text-transform: uppercase;
 `;
 
-const InnerPanel = styled.div`
+const InnerPanelActive = styled.div`
   background: #2D48C5;
   color: #B3C1FF;
+  margin: auto;
+  padding: 10px;
+  min-width: 175px;
+  text-align: center;
+  border-radius: 3.5px;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+`;
+
+const InnerPanelInactive = styled.div`
+  background: #EAEEF9;
+  color: #858A93;
   margin: auto;
   padding: 10px;
   min-width: 175px;
@@ -42,46 +56,90 @@ const SettingsPanel = styled.div`
   display: flex;
 `;
 
-export default function NavigationPanel() {
+export default function NavigationPanel({page}) {
+  console.log('🚀 => page', page); //home
+  if(page === 'home') {}
+
+
   return (
     <NavigationContainer>
         <Panel>
           <LogoPanel>Job Tracker</LogoPanel>
         </Panel>
         <Panel>
-          <InnerPanel>
-            <Link href="/">
-              <a>Dashboard</a>
-            </Link>
-          </InnerPanel>
+          { page !== 'home' ? (
+            <InnerPanelInactive>
+              <Link href="/">
+                <a>Dashboard</a>
+              </Link>
+            </InnerPanelInactive>
+          ) : (
+            <InnerPanelActive>
+              <Link href="/">
+                <a>Dashboard</a>
+              </Link>
+            </InnerPanelActive>
+          ) }
         </Panel>
         <Panel>
-          <InnerPanel>
-            <Link href="/algorithms">
-              <a>Algorithms</a>
-            </Link>
-          </InnerPanel>
+          { page !== 'algorithms' ? (
+            <InnerPanelInactive>
+              <Link href="/algorithms">
+                <a>Algorithms</a>
+              </Link>
+            </InnerPanelInactive>
+          ) : (
+            <InnerPanelActive>
+              <Link href="/algorithms">
+                <a>Algorithms</a>
+              </Link>
+            </InnerPanelActive>
+          ) }
         </Panel>
         <Panel>
-          <InnerPanel>
-            <Link href="/jobs">
-              <a>Jobs</a>
-            </Link>
-          </InnerPanel>
+          { page !== 'jobs' ? (
+            <InnerPanelInactive>
+              <Link href="/jobs">
+                <a>Jobs</a>
+              </Link>
+            </InnerPanelInactive>
+          ) : (
+            <InnerPanelActive>
+              <Link href="/jobs">
+                <a>Jobs</a>
+              </Link>
+            </InnerPanelActive>
+          ) }
         </Panel>
         <Panel>
-          <InnerPanel>
-            <Link href="/projects">
-              <a>Projects</a>
-            </Link>
-          </InnerPanel>
+          { page !== 'projects' ? (
+            <InnerPanelInactive>
+              <Link href="/projects">
+                <a>Projects</a>
+              </Link>
+            </InnerPanelInactive>
+          ) : (
+            <InnerPanelActive>
+              <Link href="/projects">
+                <a>Projects</a>
+              </Link>
+            </InnerPanelActive>
+          ) }
         </Panel>
         <SettingsPanel>
-          <InnerPanel>
-            <Link href="/settings">
-              <a>Settings</a>
-            </Link>
-          </InnerPanel>
+          { page !== 'settings' ? (
+            <InnerPanelInactive>
+              <Link href="/settings">
+                <a>settings</a>
+              </Link>
+            </InnerPanelInactive>
+          ) : (
+            <InnerPanelActive>
+              <Link href="/settings">
+                <a>settings</a>
+              </Link>
+            </InnerPanelActive>
+          ) }
         </SettingsPanel>
     </NavigationContainer>
   )
