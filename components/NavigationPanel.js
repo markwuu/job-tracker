@@ -49,6 +49,11 @@ const InnerPanelInactive = styled.div`
   font-size: 12px;
   letter-spacing: 0.2px;
   text-transform: uppercase;
+
+  &:hover {
+    background: #e1e6f2;
+    /* background: black; */
+  }
 `;
 
 const SettingsPanel = styled.div`
