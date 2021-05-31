@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { useSession } from "next-auth/client";
+import Layout from '../../components/layout';
 
 const Project = () => {
   const router = useRouter()
@@ -33,7 +34,7 @@ const Project = () => {
   }
 
   return (
-    <>
+    <Layout>
       <h1>{project && project.title ? project.title : `No project found with title ${id}`}</h1>
       <p>{project && project.description ? project.description : ''}</p>
       {
@@ -41,7 +42,7 @@ const Project = () => {
           <p>{project.status === 'incomplete' ? 'Not finished' : 'Finished'}</p>
         ) : ''
       }
-    </>
+    </Layout>
   )
 }
 

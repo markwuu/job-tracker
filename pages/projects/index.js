@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSession } from "next-auth/client";
 import Link from "next/link";
+import Layout from '../../components/layout';
 
 export default function Projects() {
   const [session, loading] = useSession();
@@ -34,7 +35,7 @@ export default function Projects() {
   }
 
   return (
-    <>
+    <Layout>
       <h1>Private Projects Overview Page</h1>
         {projects.map((project, i) => {
           const link = `/project/${(project.title).replace(" ","-").toLowerCase()}`;
@@ -46,6 +47,6 @@ export default function Projects() {
             </div>
           )
         })}
-    </>
+    </Layout>
   )
 }

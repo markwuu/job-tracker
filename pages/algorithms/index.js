@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSession } from "next-auth/client";
+import Layout from '../../components/layout';
 
 export default function Algorithms() {
   const [session, loading] = useSession();
@@ -31,11 +32,11 @@ export default function Algorithms() {
   }
 
   return (
-    <main>
+    <Layout>
       <h1>Private Algorithms Overview Page</h1>
       <p>
         {content}
       </p>
-    </main>
+    </Layout>
   )
 }

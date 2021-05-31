@@ -9,31 +9,25 @@ const PageContainer = styled.div`
 `;
 
 const NavTopPageContainer = styled.div`
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
   height: 100vh;
   width: 100vw;
 `;
 
 const NextPageContainer = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 90vh;
 `;
 
 function MyApp({ Component, pageProps }) {
+console.log('🚀 => pageProps', pageProps);
+console.log('🚀 => Component', Component);
 
   return (
     <Provider session={pageProps.session}>
-      <PageContainer>
-        <NavigationPanel/>
-        <NavTopPageContainer>
-          <NavigationTopBar {...pageProps}/>
-          <NextPageContainer>
-            <Component />
-          </NextPageContainer>
-        </NavTopPageContainer>
-      </PageContainer>
+      <Component {...pageProps} />
     </Provider>
   );
 }

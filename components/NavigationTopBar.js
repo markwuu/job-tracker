@@ -2,7 +2,7 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import styled from "styled-components";
 
 const SignInContainer = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 10vh;
 `;
 
