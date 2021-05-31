@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Link from 'next/link';
 
 const NavigationContainer = styled.div`
-  /* border: 1px solid black; */
   min-width: 225px;
   height: 100vh;
   display: flex;
@@ -11,24 +10,20 @@ const NavigationContainer = styled.div`
 `;
 
 const Panel = styled.div`
-  /* border: 1px solid black; */
   height: 10vh;
-  display: flex;
-`;
-
-const SettingsPanel = styled.div`
-  /* border: 1px solid black; */
-  height: 10vh;
-  margin-top: auto;
   display: flex;
 `;
 
 const LogoPanel = styled.div`
-  /* border: 1px solid red; */
+  margin: auto;
+  padding: 10px;
+  min-width: 175px;
+  text-align: center;
+  font-size: 21px;
+  text-transform: uppercase;
 `;
 
 const InnerPanel = styled.div`
-  /* border: 1px solid red; */
   background: #2D48C5;
   color: #B3C1FF;
   margin: auto;
@@ -39,6 +34,12 @@ const InnerPanel = styled.div`
   font-size: 12px;
   letter-spacing: 0.2px;
   text-transform: uppercase;
+`;
+
+const SettingsPanel = styled.div`
+  height: 10vh;
+  margin-top: auto;
+  display: flex;
 `;
 
 export default function NavigationPanel() {
