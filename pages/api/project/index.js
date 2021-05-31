@@ -23,10 +23,10 @@ export default async (req, res) => {
         //     .collection("projects")
         //     .insertOne({
         //         _user: userId,
-        //         title: "Painting Application",
-        //         slugTitle: "painting-application",
-        //         description: "A painting application for you creatives",
-        //         status: "complete"
+        //         title: "Charity Finder",
+        //         slugTitle: "charity-finder",
+        //         description: "A application that finds random charities",
+        //         status: "incomplete"
         //     })
 
         //get projects
