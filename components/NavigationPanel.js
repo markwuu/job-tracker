@@ -39,6 +39,7 @@ const InnerPanelActive = styled.div`
 
 const InnerPanelInactive = styled.div`
   background: #EAEEF9;
+  box-shadow: 2.5px 3px;
   color: #858A93;
   margin: auto;
   padding: 10px;
