@@ -5,43 +5,61 @@ import Layout from '../../components/layout';
 import styled from 'styled-components';
 
 const PageContainer= styled.div`
-  height: 90vh;
+  /* border: 1px solid black; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 `;
 
-const ActivityLog = styled.div`
-  border: 1px solid purple;
-  margin: 0 0 110px 0;
-  width: 280px;
+const Title = styled.h1`
+  /* border: 1px solid black; */
+  display: flex;
+  height: 80px;
+  margin: 0;
+  width: 1000px;
 `;
 
 const ProjectsContainer= styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
-  height: 80vh;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  width: 1000px;
 `;
+
 const ProjectListContainer= styled.div`
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 0 80px 0;
   width: 700px;
 `;
 
 const Project = styled.div`
-  border: 1px solid blue;
+  /* border: 2px solid blue; */
   border-radius: 5px;
-  /* height: 200px; */
   margin: 0 0 30px 0;
   width: 200px;
+  color: #858A93;
+  background: #EAEEF9;
+  box-shadow: 3.5px 2px 5px 1px;
+  padding: 15px;
+  height: 200px;
 `;
 
-const Title = styled.h1`
-  border: 0px solid red;
-  height: 10vh;
-  margin: 0;
-  padding: 0 25px;
+const ActivityLog = styled.div`
+  /* border: 2px solid red; */
+  border-radius: 5px;
+  height: 435px;
+  width: 200px;
+  background: #EAEEF9;
+  border-radius: 5px;
+  margin: 0 0 30px 0;
+  color: #858A93;
+  box-shadow: 3.5px 2px 5px 1px;
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
 `;
 
 export default function Projects() {
@@ -78,16 +96,18 @@ export default function Projects() {
   return (
     <Layout page={'projects'}>
       <PageContainer>
-        <Title>Projects</Title>
+        <Title>
+          <div style={{margin: 'auto 0', fontSize: '40px'}}>Projects</div>
+        </Title>
         <ProjectsContainer>
           <ProjectListContainer>
             {projects.map((project, i) => {
               const link = `/project/${(project.title).replace(" ","-").toLowerCase()}`;
               return (
                 <Project key={i}>
-                  <p><Link href={link}>{project.title}</Link></p>
-                  <p>{project.description}</p>
-                  <p>{project.status}</p>
+                  <p style={{textAlign:'center', fontSize: '20px'}}><Link href={link}>{project.title}</Link></p>
+                  <p style={{textAlign:'center'}}>{project.description}</p>
+                  {/* <p style={{textAlign:'center'}}>{project.status}</p> */}
                 </Project>
               )
             })}

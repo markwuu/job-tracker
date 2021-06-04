@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const SignInContainer = styled.div`
   /* border: 1px solid black; */
-  height: 10vh;
+  height: 80px;
   display: flex;
   justify-content: flex-end;
   padding: 0 10px 0 0;

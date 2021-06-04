@@ -2,20 +2,23 @@ import styled from "styled-components";
 import Link from 'next/link';
 
 const NavigationContainer = styled.div`
+  /* border: 1px solid black; */
   min-width: 225px;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #F8F8FA;
+  background: #9aa79b;
   box-shadow: inset 0px 0px 10px #d1bbbb;
 `;
 
 const Panel = styled.div`
-  height: 10vh;
+  /* border: 1px solid black; */
+  height: 80px;
   display: flex;
 `;
 
 const LogoPanel = styled.div`
+  /* border: 1px solid black; */
   margin: auto;
   padding: 10px;
   min-width: 175px;
@@ -25,7 +28,7 @@ const LogoPanel = styled.div`
 `;
 
 const InnerPanelActive = styled.div`
-  background: #2D48C5;
+  background: #2e3532;
   color: #B3C1FF;
   margin: auto;
   padding: 10px;
