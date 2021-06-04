@@ -74,6 +74,27 @@ const ActivityLog = styled.div`
   }
 `;
 
+const CreateButton = styled.button`
+  background: #ff9b7d;
+  color: white;
+  padding: 10px;
+  min-width: 100px;
+  text-align: center;
+  border-radius: 3.5px;
+  font-size: 12px;
+  -webkit-letter-spacing: 0.2px;
+  -moz-letter-spacing: 0.2px;
+  -ms-letter-spacing: 0.2px;
+  letter-spacing: 0.2px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    background: #c37058;
+  }
+`;
+
 export default function Projects() {
   const [session, loading] = useSession();
   const [projects, setProjects] = useState([]);
@@ -109,7 +130,10 @@ export default function Projects() {
     <Layout page={'projects'}>
       <PageContainer>
         <Title>
-          <div style={{margin: 'auto 0', fontSize: '40px', fontWeight: '400'}}>Projects</div>
+          <div style={{margin: 'auto 0', fontSize: '40px', fontWeight: '400', width: '600px', display: 'flex', justifyContent: 'space-between'}}>
+            Projects
+            <CreateButton>Create</CreateButton>
+          </div>
         </Title>
         <ProjectsContainer>
           <ProjectListContainer>
