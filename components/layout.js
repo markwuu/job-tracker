@@ -11,6 +11,8 @@ const NavTopPageContainer = styled.div`
   flex-direction: column;
   width: 100vw;
   background-color: #f3f7fe;
+  margin-left: 225px;
+  min-height: 100vh;
 `;
 
 const NextPageContainer = styled.div`

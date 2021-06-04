@@ -8,6 +8,7 @@ const NavigationContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
+  position: fixed;
 `;
 
 const Panel = styled.div`
