@@ -16,14 +16,14 @@ const Title = styled.h1`
   display: flex;
   height: 80px;
   margin: 0;
-  width: 1000px;
+  width: 900px;
 `;
 
 const ProjectsContainer= styled.div`
   /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
-  width: 1000px;
+  width: 900px;
 `;
 
 const ProjectListContainer= styled.div`
@@ -32,19 +32,19 @@ const ProjectListContainer= styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 700px;
+  width: 600px;
 `;
 
 const Project = styled.div`
   /* border: 2px solid blue; */
   border-radius: 5px;
   margin: 0 0 30px 0;
-  width: 200px;
+  width: 600px;
   color: #cad1dc;
   background: #FFFFFF;
   box-shadow: 0 3px 0px 0px;
-  padding: 15px;
-  height: 200px;
+  height: 125px;
+  padding: 0px 20px;
 
   a {
     color: black;
