@@ -7,8 +7,7 @@ const NavigationContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #9aa79b;
-  box-shadow: inset 0px 0px 10px #d1bbbb;
+  background: #FFFFFF;
 `;
 
 const Panel = styled.div`
@@ -28,8 +27,8 @@ const LogoPanel = styled.div`
 `;
 
 const InnerPanelActive = styled.div`
-  background: #2e3532;
-  color: #B3C1FF;
+  background: #5BB1FF;
+  color: #FFFFFF;
   margin: auto;
   padding: 10px;
   min-width: 175px;
@@ -41,9 +40,9 @@ const InnerPanelActive = styled.div`
 `;
 
 const InnerPanelInactive = styled.div`
-  background: #EAEEF9;
-  box-shadow: 2.5px 3px;
-  color: #858A93;
+  background: #5BB1FF;
+  box-shadow: 0 3px 0px 0px;
+  color: #cad1dc;
   margin: auto;
   padding: 10px;
   min-width: 175px;
@@ -54,8 +53,8 @@ const InnerPanelInactive = styled.div`
   text-transform: uppercase;
 
   &:hover {
-    background: #e1e6f2;
-    /* background: black; */
+    background: #52a9f7;
+    cursor: pointer;
   }
 `;
 
@@ -74,77 +73,77 @@ export default function NavigationPanel({page}) {
         </Panel>
         <Panel>
           { page !== 'home' ? (
-            <InnerPanelInactive>
-              <Link href="/">
-                <a>Dashboard</a>
-              </Link>
-            </InnerPanelInactive>
+            <Link href="/">
+              <InnerPanelInactive>
+                  <a>Dashboard</a>
+              </InnerPanelInactive>
+            </Link>
           ) : (
-            <InnerPanelActive>
-              <Link href="/">
+            <Link href="/">
+              <InnerPanelActive>
                 <a>Dashboard</a>
-              </Link>
-            </InnerPanelActive>
+              </InnerPanelActive>
+            </Link>
           ) }
         </Panel>
         <Panel>
           { page !== 'algorithms' ? (
-            <InnerPanelInactive>
-              <Link href="/algorithms">
-                <a>Algorithms</a>
-              </Link>
-            </InnerPanelInactive>
+            <Link href="/algorithms">
+              <InnerPanelInactive>
+                  <a>Algorithms</a>
+              </InnerPanelInactive>
+            </Link>
           ) : (
-            <InnerPanelActive>
-              <Link href="/algorithms">
-                <a>Algorithms</a>
-              </Link>
-            </InnerPanelActive>
+            <Link href="/algorithms">
+              <InnerPanelActive>
+                  <a>Algorithms</a>
+              </InnerPanelActive>
+            </Link>
           ) }
         </Panel>
         <Panel>
           { page !== 'jobs' ? (
-            <InnerPanelInactive>
-              <Link href="/jobs">
-                <a>Jobs</a>
-              </Link>
-            </InnerPanelInactive>
+            <Link href="/jobs">
+              <InnerPanelInactive>
+                  <a>Jobs</a>
+              </InnerPanelInactive>
+            </Link>
           ) : (
-            <InnerPanelActive>
-              <Link href="/jobs">
-                <a>Jobs</a>
-              </Link>
-            </InnerPanelActive>
+            <Link href="/jobs">
+              <InnerPanelActive>
+                  <a>Jobs</a>
+              </InnerPanelActive>
+            </Link>
           ) }
         </Panel>
         <Panel>
           { page !== 'projects' ? (
-            <InnerPanelInactive>
-              <Link href="/projects">
+            <Link href="/projects">
+              <InnerPanelInactive>
                 <a>Projects</a>
-              </Link>
-            </InnerPanelInactive>
+              </InnerPanelInactive>
+            </Link>
           ) : (
-            <InnerPanelActive>
-              <Link href="/projects">
+            <Link href="/projects">
+              <InnerPanelActive>
                 <a>Projects</a>
-              </Link>
-            </InnerPanelActive>
+              </InnerPanelActive>
+            </Link>
           ) }
         </Panel>
         <SettingsPanel>
           { page !== 'settings' ? (
-            <InnerPanelInactive>
-              <Link href="/settings">
+            <Link href="/settings">
+              <InnerPanelInactive>
                 <a>settings</a>
-              </Link>
-            </InnerPanelInactive>
+              </InnerPanelInactive>
+            </Link>
           ) : (
-            <InnerPanelActive>
-              <Link href="/settings">
+            <Link href="/settings">
+              <InnerPanelActive>
                 <a>settings</a>
-              </Link>
-            </InnerPanelActive>
+              </InnerPanelActive>
+            </Link>
           ) }
         </SettingsPanel>
     </NavigationContainer>

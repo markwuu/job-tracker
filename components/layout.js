@@ -10,7 +10,7 @@ const NavTopPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  background-color: #e0e0e0;
+  background-color: #f3f7fe;
 `;
 
 const NextPageContainer = styled.div`

@@ -40,11 +40,19 @@ const Project = styled.div`
   border-radius: 5px;
   margin: 0 0 30px 0;
   width: 200px;
-  color: #858A93;
-  background: #EAEEF9;
-  box-shadow: 3.5px 2px 5px 1px;
+  color: #cad1dc;
+  background: #FFFFFF;
+  box-shadow: 0 3px 0px 0px;
   padding: 15px;
   height: 200px;
+
+  a {
+    color: black;
+  }
+
+  p {
+    color: black;
+  }
 `;
 
 const ActivityLog = styled.div`
@@ -52,14 +60,18 @@ const ActivityLog = styled.div`
   border-radius: 5px;
   height: 435px;
   width: 200px;
-  background: #EAEEF9;
+  background: #FFFFFF;
   border-radius: 5px;
   margin: 0 0 30px 0;
-  color: #858A93;
-  box-shadow: 3.5px 2px 5px 1px;
+  color: #cad1dc;
+  box-shadow: 0 3px 0px 0px;
   padding: 15px;
   text-align: center;
   font-size: 20px;
+
+  p {
+    color: black;
+  }
 `;
 
 export default function Projects() {
@@ -97,7 +109,7 @@ export default function Projects() {
     <Layout page={'projects'}>
       <PageContainer>
         <Title>
-          <div style={{margin: 'auto 0', fontSize: '40px'}}>Projects</div>
+          <div style={{margin: 'auto 0', fontSize: '40px', fontWeight: '400'}}>Projects</div>
         </Title>
         <ProjectsContainer>
           <ProjectListContainer>
@@ -105,14 +117,20 @@ export default function Projects() {
               const link = `/project/${(project.slugTitle).replace(" ","-").toLowerCase()}`;
               return (
                 <Project key={i}>
-                  <p style={{textAlign:'center', fontSize: '20px'}}><Link href={link}>{project.title}</Link></p>
-                  <p style={{textAlign:'center'}}>{project.description}</p>
+                  <p style={{ fontSize: '20px'}}>
+                    <Link href={link} style={{color: 'black'}}>{project.title}</Link>
+                  </p>
+                  <p style={{}}>
+                    {project.description}
+                  </p>
                   {/* <p style={{textAlign:'center'}}>{project.status}</p> */}
                 </Project>
               )
             })}
           </ProjectListContainer>
-          <ActivityLog>Activity Log</ActivityLog>
+          <ActivityLog>
+            <p>Activity Log</p>
+          </ActivityLog>
         </ProjectsContainer>
       </PageContainer>
     </Layout>
