@@ -72,8 +72,8 @@ export default function Projects() {
       const json = await res.json();
 
       if(json.data) {
-        const projectTitles = json.data.map(({title, description, status}) => {
-          return { title, description, status};
+        const projectTitles = json.data.map(({title, description, status, slugTitle}) => {
+          return { title, description, status, slugTitle };
         });
 
         setProjects(projectTitles);
@@ -102,7 +102,7 @@ export default function Projects() {
         <ProjectsContainer>
           <ProjectListContainer>
             {projects.map((project, i) => {
-              const link = `/project/${(project.title).replace(" ","-").toLowerCase()}`;
+              const link = `/project/${(project.slugTitle).replace(" ","-").toLowerCase()}`;
               return (
                 <Project key={i}>
                   <p style={{textAlign:'center', fontSize: '20px'}}><Link href={link}>{project.title}</Link></p>
