@@ -28,7 +28,7 @@ const LogoPanel = styled.div`
 `;
 
 const InnerPanelActive = styled.div`
-  background: #5BB1FF;
+  background: #2976bb;
   color: #FFFFFF;
   margin: auto;
   padding: 10px;
@@ -43,7 +43,7 @@ const InnerPanelActive = styled.div`
 const InnerPanelInactive = styled.div`
   background: #5BB1FF;
   box-shadow: 0 3px 0px 0px;
-  color: #cad1dc;
+  color: #7291c3;
   margin: auto;
   padding: 10px;
   min-width: 175px;
@@ -56,6 +56,10 @@ const InnerPanelInactive = styled.div`
   &:hover {
     background: #52a9f7;
     cursor: pointer;
+  }
+
+  a {
+    color: white;
   }
 `;
 

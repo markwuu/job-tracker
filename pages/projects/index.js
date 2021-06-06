@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSession } from "next-auth/client";
 import Link from "next/link";
 import Layout from '../../components/layout';
+import Form from '../../components/Form';
 import styled from 'styled-components';
 
 const PageContainer= styled.div`
@@ -11,12 +12,32 @@ const PageContainer= styled.div`
   flex-direction: column;
 `;
 
-const Title = styled.h1`
+const OuterTitleContainer = styled.div`
   /* border: 1px solid black; */
   display: flex;
   height: 80px;
   margin: 0;
   width: 900px;
+
+  @media (max-width: 1200px) {
+    width: 600px;
+  }
+`;
+
+const InnerTitleContainer = styled.div`
+  margin: auto 0;
+  font-size: 40px;
+  font-weight: 400;
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+  height: 80px;
+  align-items: center;
+
+  h1 {
+    font-size: 34px;
+  }
 `;
 
 const ProjectsContainer= styled.div`
@@ -24,6 +45,10 @@ const ProjectsContainer= styled.div`
   display: flex;
   justify-content: space-between;
   width: 900px;
+
+  @media (max-width: 1200px) {
+    width: 600px;
+  }
 `;
 
 const ProjectListContainer= styled.div`
@@ -53,6 +78,10 @@ const Project = styled.div`
   p {
     color: black;
   }
+
+  @media (max-width: 890px) {
+    height: 100px;
+  }
 `;
 
 const ActivityLog = styled.div`
@@ -72,6 +101,10 @@ const ActivityLog = styled.div`
   p {
     color: black;
   }
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const CreateButton = styled.button`
@@ -82,13 +115,11 @@ const CreateButton = styled.button`
   text-align: center;
   border-radius: 3.5px;
   font-size: 12px;
-  -webkit-letter-spacing: 0.2px;
-  -moz-letter-spacing: 0.2px;
-  -ms-letter-spacing: 0.2px;
   letter-spacing: 0.2px;
   border: none;
   text-transform: uppercase;
   cursor: pointer;
+  height: 35px;
 
   &:hover {
     background: #c37058;
@@ -98,6 +129,7 @@ const CreateButton = styled.button`
 export default function Projects() {
   const [session, loading] = useSession();
   const [projects, setProjects] = useState([]);
+  const [displayForm, setDisplayForm] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -126,15 +158,24 @@ export default function Projects() {
     )
   }
 
+  const CreateProject = () => {
+    console.log('hi');
+    document.body.style.height = '100%';
+    document.body.style.overflow = 'hidden';
+    setDisplayForm(true);
+  }
+
   return (
     <Layout page={'projects'}>
+      {/* <Form/> */}
+      { displayForm ? <Form/> : ''}
       <PageContainer>
-        <Title>
-          <div style={{margin: 'auto 0', fontSize: '40px', fontWeight: '400', width: '600px', display: 'flex', justifyContent: 'space-between'}}>
-            Projects
-            <CreateButton>Create</CreateButton>
-          </div>
-        </Title>
+        <OuterTitleContainer>
+          <InnerTitleContainer>
+            <h1>Projects</h1>
+            <CreateButton onClick={CreateProject}>Create</CreateButton>
+          </InnerTitleContainer>
+        </OuterTitleContainer>
         <ProjectsContainer>
           <ProjectListContainer>
             {projects.map((project, i) => {
