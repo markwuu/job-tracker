@@ -1,42 +1,46 @@
 import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../util/mongodb";
-import mongoose from "mongoose";
-// require('../../../models/Project');
-// const Project = mongoose.model('projects')
 
 export default async (req, res) => {
-    const session = await getSession({req});
-    if(session){
-        const { userId } = session;
-        console.log('userId', userId);
 
-        const { db } = await connectToDatabase();
+    if (req.method === 'GET') {
+        const session = await getSession({req});
+        if(session) {
+            const { userId } = session;
+            const { db } = await connectToDatabase();
 
-        const users = await db
-            .collection("users")
-            .find()
-            .toArray();
-        console.log('users', users);
+            //get projects
+            const projects = await db
+                .collection("projects")
+                .find({_user: userId})
+                .toArray();
 
-        // create project
-        // const newProject = await db
-        //     .collection("projects")
-        //     .insertOne({
-        //         _user: userId,
-        //         title: "Charity Finder",
-        //         slugTitle: "charity-finder",
-        //         description: "A application that finds random charities",
-        //         status: "incomplete"
-        //     })
+            res.send({ data: projects.reverse() });
+        } else {
+            res.send({ error: "You need to be signed in to view project data" });
+        }
+    } else if (req.method === 'POST') {
+        const session = await getSession({req});
 
-        //get projects
-        const project = await db
-            .collection("projects")
-            .find({_user: userId})
-            .toArray();
-        console.log('project', project);
-        res.send({ data: project });
-    } else {
-        res.send({ error: "You need to be signed in to view project data" });
+        if(session) {
+            const { userId } = session;
+            const { db } = await connectToDatabase();
+            console.log('req.body', req.body);
+
+            // create project
+            const newProject = await db
+                .collection("projects")
+                .insertOne({
+                    _user: userId,
+                    title: req.body.name,
+                    slugTitle: req.body.name.replace(" ", "-"),
+                    description: req.body.description,
+                    status: "incomplete"
+                });
+
+            res.send({ data: null });
+        } else {
+            res.send({ error: "You need to be signed in to view project data" });
+        }
     }
 }

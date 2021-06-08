@@ -4,6 +4,7 @@ import Link from "next/link";
 import Layout from '../../components/layout';
 import Form from '../../components/Form';
 import styled from 'styled-components';
+import { useRouter } from 'next/router'
 
 const PageContainer= styled.div`
   /* border: 1px solid black; */
@@ -130,6 +131,9 @@ export default function Projects() {
   const [session, loading] = useSession();
   const [projects, setProjects] = useState([]);
   const [displayForm, setDisplayForm] = useState(false);
+  const [formNameValue, setFormNameValue] = useState('');
+  const [formDescriptionValue, setFormDescriptionValue] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -158,22 +162,60 @@ export default function Projects() {
     )
   }
 
-  const CreateProject = () => {
-    console.log('hi');
+  const OpenCreateProjectModal = () => {
     document.body.style.height = '100%';
     document.body.style.overflow = 'hidden';
     setDisplayForm(true);
   }
 
+  const CloseCreateProjectModal = () => {
+    document.body.style.height = 'auto';
+    document.body.style.overflow = 'visible';
+    setDisplayForm(false);
+  }
+
+  const PostCreateProject = async () => {
+    console.log('postcreateporject hit')
+    const res = await fetch("/api/project", {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: formNameValue,
+        description: formDescriptionValue
+      })
+    });
+
+    router.reload();
+  }
+
+  const onFormNameChange = (event) => {
+    setFormNameValue(event.target.value)
+  }
+
+  const onFormDescriptionChange = (event) => {
+    setFormDescriptionValue(event.target.value)
+  }
+
   return (
     <Layout page={'projects'}>
-      {/* <Form/> */}
-      { displayForm ? <Form/> : ''}
+      { displayForm ?
+        <Form
+          CloseCreateProjectModal={CloseCreateProjectModal}
+          PostCreateProject={PostCreateProject}
+          formNameValue={formNameValue}
+          formDescriptionValue={formDescriptionValue}
+          onFormNameChange={onFormNameChange}
+          onFormDescriptionChange={onFormDescriptionChange}
+        />
+      : ''}
       <PageContainer>
         <OuterTitleContainer>
           <InnerTitleContainer>
             <h1>Projects</h1>
-            <CreateButton onClick={CreateProject}>Create</CreateButton>
+            <CreateButton onClick={OpenCreateProjectModal}>Create</CreateButton>
           </InnerTitleContainer>
         </OuterTitleContainer>
         <ProjectsContainer>

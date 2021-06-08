@@ -7,8 +7,6 @@ const FormContainer = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    /* background: black;
-    opacity: 0.45; */
 `;
 
 const Background = styled.div`
@@ -35,20 +33,41 @@ const FormBox = styled.div`
 const Modal = styled.div`
     margin: auto;
     /* border: 1px solid black; */
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
     background: white;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    padding: 60px 40px 0 40px;
+    padding: 0 50px;
+    justify-content: center;
+
+    label {
+        padding: 0 0 10px 0;
+    }
+
+    input {
+        margin: 0 0 25px 0;
+        padding: 4px 0;
+
+        &[type="submit"] {
+            background-color: #352323;
+            color: white;
+            border: none;
+            padding: 6px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+
+            &:hover {
+                background: #000000;
+            }
+        }
+    }
+
 `;
 
-export default function Form() {
-
-    const submitForm = () => {
-
-    }
+export default function Form({CloseCreateProjectModal, PostCreateProject, formNameValue, onFormNameChange, formDescriptionValue, onFormDescriptionChange}) {
 
     return (
       <FormContainer>
@@ -58,12 +77,13 @@ export default function Form() {
                 <label>
                 Project Name:
                 </label>
-                <input type="text" name="name" />
+                <input type="text" name="name" value={formNameValue} onChange={onFormNameChange}/>
                 <label>
                 Project Description:
                 </label>
-                <input type="text" name="name" />
-                <input type="submit" value="Submit" onClick={submitForm} />
+                <input type="text" name="description" value={formDescriptionValue} onChange={onFormDescriptionChange}/>
+                <input type="submit" value="Submit" onClick={PostCreateProject} />
+                <button onClick={CloseCreateProjectModal}>close</button>
             </Modal>
         </FormBox>
       </FormContainer>
