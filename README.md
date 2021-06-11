@@ -1,6 +1,6 @@
 # A Job Progress Tracker for Software Engineers
 
-## Application
+## Application 🖥
 [View demo](https://github.com/markwuu/job-tracker)
 
 ## Front-end Technology 🎨
