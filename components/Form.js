@@ -32,22 +32,25 @@ const FormBox = styled.div`
 
 const Modal = styled.div`
     margin: auto;
-    /* border: 1px solid black; */
+    /* border: 3.5px solid black; */
     height: 300px;
     width: 300px;
     background: white;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    padding: 0 50px;
-    justify-content: center;
+    justify-content: flex-start;
+
+    div {
+        padding: 20px 20px 5px 0px;
+    }
 
     label {
-        padding: 0 0 10px 0;
+        padding: 0 50px 10px 50px;
     }
 
     input {
-        margin: 0 0 25px 0;
+        margin: 0 50px 25px 50px;
         padding: 4px 0;
 
         &[type="submit"] {
@@ -65,6 +68,23 @@ const Modal = styled.div`
         }
     }
 
+    button {
+        color: white;
+        background: #ce6666;
+        width: 25px;
+        height: 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        float: right;
+
+        &:hover {
+                background: #b83e3e;
+        }
+    }
+
+
+
 `;
 
 export default function Form({CloseCreateProjectModal, PostCreateProject, formNameValue, onFormNameChange, formDescriptionValue, onFormDescriptionChange}) {
@@ -74,6 +94,9 @@ export default function Form({CloseCreateProjectModal, PostCreateProject, formNa
         <Background/>
         <FormBox>
             <Modal>
+                <div>
+                    <button onClick={CloseCreateProjectModal}>X</button>
+                </div>
                 <label>
                 Project Name:
                 </label>
@@ -83,7 +106,7 @@ export default function Form({CloseCreateProjectModal, PostCreateProject, formNa
                 </label>
                 <input type="text" name="description" value={formDescriptionValue} onChange={onFormDescriptionChange}/>
                 <input type="submit" value="Submit" onClick={PostCreateProject} />
-                <button onClick={CloseCreateProjectModal}>close</button>
+                {/* <button onClick={CloseCreateProjectModal}>close</button> */}
             </Modal>
         </FormBox>
       </FormContainer>
