@@ -65,6 +65,7 @@ const Job = styled.div`
   margin: 0 0 25px 0;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 
   a {
     color: black;
@@ -73,6 +74,10 @@ const Job = styled.div`
   p {
     color: black;
     font-size: 20px;
+  }
+
+  &:hover {
+      background: #e1e5ea;
   }
 
   @media (max-width: 890px) {
@@ -219,14 +224,12 @@ export default function Jobs() {
             {jobs.map((job, i) => {
               const link = `/job/${(job.slugTitle).replace(" ","-").toLowerCase()}`;
               return (
-                <Job key={i}>
-                  <p>
-                    <Link href={link} style={{color: 'black'}}>{job.company}</Link>
-                  </p>
-                  <p>
-                    {job.description}
-                  </p>
-                </Job>
+                <Link href={link} style={{color: 'black'}}>
+                  <Job key={i}>
+                    <p>{job.company}</p>
+                    <p>{job.description}</p>
+                  </Job>
+                </Link>
               )
             })}
           </JobsListContainer>

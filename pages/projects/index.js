@@ -42,7 +42,6 @@ const InnerTitleContainer = styled.div`
 `;
 
 const ProjectsContainer= styled.div`
-  /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
   width: 900px;
@@ -53,16 +52,12 @@ const ProjectsContainer= styled.div`
 `;
 
 const ProjectListContainer= styled.div`
-  /* border: 1px solid black; */
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   width: 600px;
 `;
 
 const Project = styled.div`
-  /* border: 2px solid blue; */
   border-radius: 5px;
   margin: 0 0 30px 0;
   width: 600px;
@@ -71,6 +66,9 @@ const Project = styled.div`
   box-shadow: 0 3px 0px 0px;
   height: 125px;
   padding: 0px 20px;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  cursor: pointer;
 
   a {
     color: black;
@@ -78,6 +76,11 @@ const Project = styled.div`
 
   p {
     color: black;
+    font-size: 20px;
+  }
+
+  &:hover {
+      background: #e1e5ea;
   }
 
   @media (max-width: 890px) {
@@ -86,7 +89,6 @@ const Project = styled.div`
 `;
 
 const ActivityLog = styled.div`
-  /* border: 2px solid red; */
   border-radius: 5px;
   height: 435px;
   width: 200px;
@@ -225,15 +227,12 @@ export default function Projects() {
             {projects.map((project, i) => {
               const link = `/project/${(project.slugTitle).replace(" ","-").toLowerCase()}`;
               return (
-                <Project key={i}>
-                  <p style={{ fontSize: '20px'}}>
-                    <Link href={link} style={{color: 'black'}}>{project.title}</Link>
-                  </p>
-                  <p style={{}}>
-                    {project.description}
-                  </p>
-                  {/* <p style={{textAlign:'center'}}>{project.status}</p> */}
-                </Project>
+                <Link href={link} style={{color: 'black'}}>
+                  <Project key={i}>
+                    <p>{project.title}</p>
+                    <p>{project.description}</p>
+                  </Project>
+                </Link>
               )
             })}
           </ProjectListContainer>
