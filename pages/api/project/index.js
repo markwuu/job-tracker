@@ -36,7 +36,17 @@ export default async (req, res) => {
                     slugTitle: req.body.name.replace(" ", "-"),
                     description: req.body.description,
                     status: "incomplete"
-                });
+                })
+                .then((res) => {
+                    console.log('res', res.ops[0]._id);
+                })
+
+            // create log
+            // const newLog = await db
+            //     .collection("logs")
+            //     .insertOne({
+            //         _user: userId
+            //     });
 
             res.send({ data: null });
         } else {

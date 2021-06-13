@@ -87,7 +87,7 @@ const Modal = styled.div`
 
 `;
 
-export default function Form({CloseCreateProjectModal, PostCreateProject, formNameValue, onFormNameChange, formDescriptionValue, onFormDescriptionChange}) {
+export default function Form({CloseCreateModal, PostCreate, formNameValue, onFormNameChange, formDescriptionValue, onFormDescriptionChange, name, description}) {
 
     return (
       <FormContainer>
@@ -95,18 +95,17 @@ export default function Form({CloseCreateProjectModal, PostCreateProject, formNa
         <FormBox>
             <Modal>
                 <div>
-                    <button onClick={CloseCreateProjectModal}>X</button>
+                    <button onClick={CloseCreateModal}>X</button>
                 </div>
                 <label>
-                Project Name:
+                    {name}:
                 </label>
                 <input type="text" name="name" value={formNameValue} onChange={onFormNameChange}/>
                 <label>
-                Project Description:
+                    {description}:
                 </label>
                 <input type="text" name="description" value={formDescriptionValue} onChange={onFormDescriptionChange}/>
-                <input type="submit" value="Submit" onClick={PostCreateProject} />
-                {/* <button onClick={CloseCreateProjectModal}>close</button> */}
+                <input type="submit" value="Submit" onClick={PostCreate} />
             </Modal>
         </FormBox>
       </FormContainer>

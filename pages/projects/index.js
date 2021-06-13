@@ -168,13 +168,13 @@ export default function Projects() {
     setDisplayForm(true);
   }
 
-  const CloseCreateProjectModal = () => {
+  const CloseCreateModal = () => {
     document.body.style.height = 'auto';
     document.body.style.overflow = 'visible';
     setDisplayForm(false);
   }
 
-  const PostCreateProject = async () => {
+  const PostCreate = async () => {
     console.log('postcreateporject hit')
     const res = await fetch("/api/project", {
       method: 'POST',
@@ -203,12 +203,14 @@ export default function Projects() {
     <Layout page={'projects'}>
       { displayForm ?
         <Form
-          CloseCreateProjectModal={CloseCreateProjectModal}
-          PostCreateProject={PostCreateProject}
+          CloseCreateModal={CloseCreateModal}
+          PostCreate={PostCreate}
           formNameValue={formNameValue}
           formDescriptionValue={formDescriptionValue}
           onFormNameChange={onFormNameChange}
           onFormDescriptionChange={onFormDescriptionChange}
+          name={'Project Name'}
+          description={'Project Description'}
         />
       : ''}
       <PageContainer>
