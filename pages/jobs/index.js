@@ -39,7 +39,6 @@ const InnerTitleContainer = styled.div`
 `;
 
 const JobsContainer= styled.div`
-  border: 1px solid black;
   display: flex;
   justify-content: space-between;
   width: 900px;
@@ -50,24 +49,20 @@ const JobsContainer= styled.div`
 `;
 
 const JobsListContainer= styled.div`
-  border: 1px solid black;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   width: 600px;
 `;
 
 const Job = styled.div`
-  border:2px solid black;
   border-radius: 5px;
-  /* margin: 0 0 30px 0; */
   width: 600px;
   color: #cad1dc;
   background: #FFFFFF;
   box-shadow: 0 3px 0px 0px;
   height: 64px;
   padding: 0px 20px;
+  margin: 0 0 25px 0;
   display: flex;
   justify-content: space-between;
 
