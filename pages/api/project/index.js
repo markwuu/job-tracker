@@ -20,8 +20,6 @@ export default async (req, res) => {
                 .collection("logs")
                 .find({_user: userId, type: 'project'})
                 .toArray();
-            console.log('projectLogs', projectLogs);
-            console.log('projects', projects);
 
             const data = {
                 projects: projects.reverse(),
@@ -38,16 +36,16 @@ export default async (req, res) => {
         if(session) {
             const { userId } = session;
             const { db } = await connectToDatabase();
-            console.log('req.body', req.body);
+            const { name, description} = req.body;
 
             // create project
             const newProject = await db
                 .collection("projects")
                 .insertOne({
                     _user: userId,
-                    title: req.body.name,
-                    slugTitle: req.body.name.replace(" ", "-"),
-                    description: req.body.description,
+                    title: name,
+                    slugTitle: name.replace(/ /g, "-").toLowerCase(),
+                    description: description,
                     status: "incomplete"
                 });
 
@@ -57,7 +55,7 @@ export default async (req, res) => {
                 .insertOne({
                     _user: userId,
                     type: 'project',
-                    description: `${req.body.name} project created`
+                    description: `${name} project created`
                 });
 
             res.send({ data: null });

@@ -7,14 +7,12 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router'
 
 const PageContainer= styled.div`
-  /* border: 1px solid black; */
   align-items: center;
   display: flex;
   flex-direction: column;
 `;
 
 const OuterTitleContainer = styled.div`
-  /* border: 1px solid black; */
   display: flex;
   height: 80px;
   margin: 0;
@@ -32,7 +30,6 @@ const InnerTitleContainer = styled.div`
   width: 600px;
   display: flex;
   justify-content: space-between;
-  /* border: 1px solid black; */
   height: 80px;
   align-items: center;
 
@@ -66,8 +63,6 @@ const Project = styled.div`
   box-shadow: 0 3px 0px 0px;
   height: 125px;
   padding: 0px 20px;
-  /* display: flex; */
-  /* justify-content: space-between; */
   cursor: pointer;
 
   a {
@@ -91,7 +86,7 @@ const Project = styled.div`
 const ActivityLog = styled.div`
   border-radius: 5px;
   height: 435px;
-  width: 200px;
+  width: 230px;
   background: #FFFFFF;
   border-radius: 5px;
   margin: 0 0 30px 0;
@@ -140,7 +135,7 @@ const LogEntries = styled.div`
   flex-direction: column;
 
   p {
-    border: 1px solid black;
+    margin: 0 0 15px 0;
   }
 `;
 
