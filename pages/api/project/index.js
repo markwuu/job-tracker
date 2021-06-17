@@ -15,7 +15,20 @@ export default async (req, res) => {
                 .find({_user: userId})
                 .toArray();
 
-            res.send({ data: projects.reverse() });
+            //get logs
+            const projectLogs = await db
+                .collection("logs")
+                .find({_user: userId, type: 'project'})
+                .toArray();
+            console.log('projectLogs', projectLogs);
+            console.log('projects', projects);
+
+            const data = {
+                projects: projects.reverse(),
+                logs: projectLogs.reverse()
+            }
+
+            res.send({ data });
         } else {
             res.send({ error: "You need to be signed in to view project data" });
         }
@@ -36,17 +49,16 @@ export default async (req, res) => {
                     slugTitle: req.body.name.replace(" ", "-"),
                     description: req.body.description,
                     status: "incomplete"
-                })
-                .then((res) => {
-                    console.log('res', res.ops[0]._id);
-                })
+                });
 
             // create log
-            // const newLog = await db
-            //     .collection("logs")
-            //     .insertOne({
-            //         _user: userId
-            //     });
+            const newLog = await db
+                .collection("logs")
+                .insertOne({
+                    _user: userId,
+                    type: 'project',
+                    description: `${req.body.name} project created`
+                });
 
             res.send({ data: null });
         } else {

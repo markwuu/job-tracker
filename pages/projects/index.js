@@ -98,11 +98,17 @@ const ActivityLog = styled.div`
   color: #cad1dc;
   box-shadow: 0 3px 0px 0px;
   padding: 15px;
-  text-align: center;
   font-size: 20px;
 
   p {
     color: black;
+    font-size: 12px;
+  }
+
+  h2 {
+    color: black;
+    font-size: 24px;
+    text-align: center;
   }
 
   @media (max-width: 1200px) {
@@ -129,9 +135,19 @@ const CreateButton = styled.button`
   }
 `;
 
+const LogEntries = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  p {
+    border: 1px solid black;
+  }
+`;
+
 export default function Projects() {
   const [session, loading] = useSession();
   const [projects, setProjects] = useState([]);
+  const [logs, setLogs] = useState([]);
   const [displayForm, setDisplayForm] = useState(false);
   const [formNameValue, setFormNameValue] = useState('');
   const [formDescriptionValue, setFormDescriptionValue] = useState('');
@@ -141,13 +157,18 @@ export default function Projects() {
     const fetchData = async () => {
       const res = await fetch("/api/project");
       const json = await res.json();
+      console.log(json.data);
 
       if(json.data) {
-        const projectTitles = json.data.map(({title, description, status, slugTitle}) => {
+        const projectData = json.data.projects.map(({title, description, status, slugTitle}) => {
           return { title, description, status, slugTitle };
         });
+        setProjects(projectData);
 
-        setProjects(projectTitles);
+        const logsData = json.data.logs.map(({description}) => {
+          return { description };
+        });
+        setLogs(logsData);
       }
     }
 
@@ -237,7 +258,14 @@ export default function Projects() {
             })}
           </ProjectListContainer>
           <ActivityLog>
-            <p>Activity Log</p>
+            <h2>Activity Log</h2>
+            <LogEntries>
+              {logs.map((log, i) => {
+                return (
+                  <p>{log.description}</p>
+                )
+              })}
+            </LogEntries>
           </ActivityLog>
         </ProjectsContainer>
       </PageContainer>
