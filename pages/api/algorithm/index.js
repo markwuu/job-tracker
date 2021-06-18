@@ -15,7 +15,18 @@ export default async (req, res) => {
                 .find({_user: userId})
                 .toArray();
 
-            res.send({ data: algorithms.reverse() });
+            //get logs
+            const algorithmLogs = await db
+                .collection("logs")
+                .find({_user: userId, type: 'algorithm'})
+                .toArray();
+
+            const data = {
+                algorithms: algorithms.reverse(),
+                logs: algorithmLogs.reverse()
+            }
+
+            res.send({ data });
         } else {
             res.send({ error: "You need to be signed in to view job data" });
         }
@@ -25,20 +36,26 @@ export default async (req, res) => {
         if(session) {
             const { userId } = session;
             const { db } = await connectToDatabase();
-            console.log('req.body', req.body);
+            const { name, description} = req.body;
 
             // create job
             const newAlgorithm = await db
                 .collection("algorithms")
                 .insertOne({
                     _user: userId,
-                    name: req.body.name,
-                    slugTitle: req.body.name.replace(" ", "-"),
-                    description: req.body.description,
-                })
-                .then((res) => {
-                    console.log('res', res.ops[0]._id);
-                })
+                    name: name,
+                    slugTitle: name.replace(" ", "-"),
+                    description: description,
+                });
+
+            // create log
+            const newLog = await db
+                .collection("logs")
+                .insertOne({
+                    _user: userId,
+                    type: 'algorithm',
+                    description: `${name} algorithm created`
+                });
 
             res.send({ data: null });
         } else {

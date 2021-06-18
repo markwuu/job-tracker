@@ -88,18 +88,28 @@ const Algorithm = styled.div`
 const ActivityLog = styled.div`
   border-radius: 5px;
   height: 435px;
-  width: 200px;
+  width: 230px;
   background: #FFFFFF;
   border-radius: 5px;
   margin: 0 0 30px 0;
   color: #cad1dc;
   box-shadow: 0 3px 0px 0px;
   padding: 15px;
-  text-align: center;
   font-size: 20px;
 
   p {
     color: black;
+    font-size: 12px;
+
+    &:before {
+      content: "✏️ ";
+    }
+  }
+
+  h2 {
+    color: black;
+    font-size: 24px;
+    text-align: center;
   }
 
   @media (max-width: 1200px) {
@@ -126,9 +136,19 @@ const CreateButton = styled.button`
   }
 `;
 
+const LogEntries = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin: 0 0 15px 0;
+  }
+`;
+
 export default function Algorithms() {
   const [session, loading] = useSession();
   const [algorithms, setAlgorithms] = useState([]);
+  const [logs, setLogs] = useState([]);
   const [displayForm, setDisplayForm] = useState(false);
   const [formNameValue, setFormNameValue] = useState('');
   const [formDescriptionValue, setFormDescriptionValue] = useState('');
@@ -141,11 +161,16 @@ export default function Algorithms() {
       console.log(json.data);
 
       if(json.data) {
-        const algorithms = json.data.map(({name, description, slugTitle}) => {
+        const algorithmData = json.data.algorithms.map(({name, description, slugTitle}) => {
           return { name, description, slugTitle };
         });
 
-        setAlgorithms(algorithms);
+        setAlgorithms(algorithmData);
+
+        const logsData = json.data.logs.map(({description}) => {
+          return { description };
+        });
+        setLogs(logsData);
       }
     }
 
@@ -234,7 +259,14 @@ export default function Algorithms() {
             })}
           </AlgorithmsListContainer>
           <ActivityLog>
-            <p>Activity Log</p>
+            <h2>Activity Log</h2>
+            <LogEntries>
+              {logs.map((log, i) => {
+                return (
+                  <p>{log.description}</p>
+                )
+              })}
+            </LogEntries>
           </ActivityLog>
         </AlgorithmsContainer>
       </PageContainer>
