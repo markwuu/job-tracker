@@ -98,6 +98,10 @@ const ActivityLog = styled.div`
   p {
     color: black;
     font-size: 12px;
+
+    &:before {
+    content: "🚀 ";
+    }
   }
 
   h2 {

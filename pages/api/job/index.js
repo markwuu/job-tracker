@@ -15,7 +15,18 @@ export default async (req, res) => {
                 .find({_user: userId})
                 .toArray();
 
-            res.send({ data: jobs.reverse() });
+            //get logs
+            const projectLogs = await db
+                .collection("logs")
+                .find({_user: userId, type: 'job'})
+                .toArray();
+
+            const data = {
+                jobs: jobs.reverse(),
+                logs: projectLogs.reverse()
+            }
+
+            res.send({ data });
         } else {
             res.send({ error: "You need to be signed in to view job data" });
         }
@@ -25,22 +36,26 @@ export default async (req, res) => {
         if(session) {
             const { userId } = session;
             const { db } = await connectToDatabase();
-            console.log('sanity check');
-            console.log('req.body', req.body);
-            console.log('req.body.company');
+            const { company, description} = req.body;
 
             // create job
             const newJob = await db
                 .collection("jobs")
                 .insertOne({
                     _user: userId,
-                    company: req.body.company,
-                    slugTitle: req.body.company.replace(" ", "-"),
-                    description: req.body.description,
-                })
-                .then((res) => {
-                    console.log('res', res.ops[0]._id);
-                })
+                    company: company,
+                    slugTitle: company.replace(" ", "-"),
+                    description: description,
+                });
+
+            // create log
+            const newLog = await db
+                .collection("logs")
+                .insertOne({
+                    _user: userId,
+                    type: 'job',
+                    description: `Applied to ${company}`
+                });
 
             res.send({ data: null });
         } else {
