@@ -100,7 +100,7 @@ const ActivityLog = styled.div`
     font-size: 12px;
 
     &:before {
-    content: "🚀 ";
+      content: "🖥 ";
     }
   }
 
