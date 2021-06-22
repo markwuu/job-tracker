@@ -50,13 +50,14 @@ const CardsContainer= styled.div`
 
 const CardsListContainer= styled.div`
   display: flex;
-  flex-direction: column;
-  width: 600px;
+  flex-direction: row;
+  width: 800px;
+  justify-content: space-between;
 `;
 
 const Card = styled.div`
   border-radius: 5px;
-  width: 600px;
+  width: 250px;
   color: #cad1dc;
   background: #FFFFFF;
   box-shadow: 0 3px 0px 0px;
