@@ -89,21 +89,18 @@ const Card = styled.div`
 export default function Algorithms() {
   const [session, loading] = useSession();
   const router = useRouter();
+  const [algorithmsCount, setAlgorithmsCount] = useState(null);
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   const res = await fetch("/api/algorithm");
-    //   const json = await res.json();
-    //   console.log(json.data);
+    const fetchData = async () => {
+      const res = await fetch("/api/dashboard");
+      const json = await res.json();
+      console.log(json.data);
+      setAlgorithmsCount(json.data.algorithms);
+    }
 
-    //   if(json.data) {
-    //     const algorithms = json.data.map(({name, description, slugTitle}) => {
-    //       return { name, description, slugTitle };
-    //     });
-    //   }
-    // }
 
-    // fetchData();
+    fetchData();
   }, [session]);
 
   if( typeof window !== "undefined" && loading) return null;
@@ -131,20 +128,10 @@ export default function Algorithms() {
         </OuterTitleContainer>
         <CardsContainer>
           <CardsListContainer>
-            {/* {algorithms.map((algorithm, i) => {
-              const link = `/algorithm/${(algorithm.slugTitle).replace(" ","-").toLowerCase()}`;
-              return (
-                <Link href={link} style={{color: 'black'}}>
-                  <Algorithm key={i}>
-                    <p>{algorithm.name}</p>
-                    <p>{algorithm.description}</p>
-                  </Algorithm>
-                </Link>
-              )
-            })} */}
             <Link href="/" style={{color: 'black'}}>
               <Card>
                 <p>Algorithms</p>
+                <p>{algorithmsCount}</p>
               </Card>
             </Link>
             <Link href="/" style={{color: 'black'}}>

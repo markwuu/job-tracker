@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../util/mongodb";
+import mongoose from 'mongoose';
 
 export default async (req, res) => {
 
@@ -38,7 +39,7 @@ export default async (req, res) => {
             const { db } = await connectToDatabase();
             const { name, description} = req.body;
 
-            // create job
+            // create algorithm
             const newAlgorithm = await db
                 .collection("algorithms")
                 .insertOne({
@@ -56,6 +57,11 @@ export default async (req, res) => {
                     type: 'algorithm',
                     description: `${name} algorithm created`
                 });
+
+            // update user profile metric
+            const user = await db
+                .collection("users")
+                .findOneAndUpdate({ _id: mongoose.Types.ObjectId(userId) }, { $inc: { "algorithms": 1 } });
 
             res.send({ data: null });
         } else {
