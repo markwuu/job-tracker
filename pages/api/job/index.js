@@ -58,7 +58,7 @@ export default async (req, res) => {
                     description: `Applied to ${company}`
                 });
 
-                            // update user profile metric
+            // update user profile metric
             const user = await db
                 .collection("users")
                 .findOneAndUpdate({ _id: mongoose.Types.ObjectId(userId) }, { $inc: { "jobs": 1 } });

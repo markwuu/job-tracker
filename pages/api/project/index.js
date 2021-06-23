@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../util/mongodb";
+import mongoose from 'mongoose';
 
 export default async (req, res) => {
 
@@ -57,6 +58,11 @@ export default async (req, res) => {
                     type: 'project',
                     description: `${name} project created`
                 });
+
+            // update user profile metric
+            const user = await db
+                .collection("users")
+                .findOneAndUpdate({ _id: mongoose.Types.ObjectId(userId) }, { $inc: { "projects": 1 } });
 
             res.send({ data: null });
         } else {

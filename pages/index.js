@@ -100,6 +100,7 @@ export default function Algorithms() {
       console.log(json.data);
       setAlgorithmsCount(json.data.algorithms);
       setJobsCount(json.data.jobs);
+      setProjectsCount(json.data.projects);
     }
 
 
@@ -146,6 +147,7 @@ export default function Algorithms() {
             <Link href="/" style={{color: 'black'}}>
               <Card>
                 <p>Projects</p>
+                <p>{projectsCount}</p>
               </Card>
             </Link>
           </CardsListContainer>
