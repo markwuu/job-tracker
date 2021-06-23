@@ -19,7 +19,10 @@ export default async (req, res) => {
             //get logs
             const projectLogs = await db
                 .collection("logs")
-                .find({_user: userId, type: 'job'})
+                .aggregate([
+                    { $match: {_user: userId, type: 'job'} },
+                    { $limit : 10 }
+                ])
                 .toArray();
 
             const data = {

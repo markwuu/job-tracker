@@ -16,10 +16,12 @@ export default async (req, res) => {
                 .find({_user: userId})
                 .toArray();
 
-            //get logs
             const algorithmLogs = await db
                 .collection("logs")
-                .find({_user: userId, type: 'algorithm'})
+                .aggregate([
+                    { $match: {_user: userId, type: 'algorithm'} },
+                    { $limit : 10 }
+                ])
                 .toArray();
 
             const data = {
