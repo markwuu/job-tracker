@@ -90,6 +90,8 @@ export default function Algorithms() {
   const [session, loading] = useSession();
   const router = useRouter();
   const [algorithmsCount, setAlgorithmsCount] = useState(null);
+  const [jobsCount, setJobsCount] = useState(null);
+  const [projectsCount, setProjectsCount] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,6 +99,7 @@ export default function Algorithms() {
       const json = await res.json();
       console.log(json.data);
       setAlgorithmsCount(json.data.algorithms);
+      setJobsCount(json.data.jobs);
     }
 
 
@@ -137,6 +140,7 @@ export default function Algorithms() {
             <Link href="/" style={{color: 'black'}}>
               <Card>
                 <p>Jobs</p>
+                <p>{jobsCount}</p>
               </Card>
             </Link>
             <Link href="/" style={{color: 'black'}}>

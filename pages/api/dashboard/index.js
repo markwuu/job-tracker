@@ -17,7 +17,8 @@ export default async (req, res) => {
             console.log('users', users.algorithms);
 
             const data = {
-                algorithms: users.algorithms
+                algorithms: users.algorithms,
+                jobs: users.jobs
             }
 
             res.send({ data });
