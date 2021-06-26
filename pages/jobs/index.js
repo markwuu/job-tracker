@@ -152,6 +152,7 @@ export default function Jobs() {
   const [displayForm, setDisplayForm] = useState(false);
   const [formCompanyValue, setFormCompanyValue] = useState('');
   const [formDescriptionValue, setFormDescriptionValue] = useState('');
+  const [disabledButton, setDisabledButton] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -199,6 +200,7 @@ export default function Jobs() {
   }
 
   const PostCreateJob = async () => {
+
     const res = await fetch("/api/job", {
       method: 'POST',
       credentials: 'same-origin',
@@ -215,11 +217,17 @@ export default function Jobs() {
   }
 
   const onFormNameChange = (event) => {
-    setFormCompanyValue(event.target.value)
+    if(formDescriptionValue){
+      setDisabledButton(false);
+    }
+    setFormCompanyValue(event.target.value);
   }
 
   const onFormDescriptionChange = (event) => {
-    setFormDescriptionValue(event.target.value)
+    if(formCompanyValue){
+      setDisabledButton(false);
+    }
+    setFormDescriptionValue(event.target.value);
   }
 
   return (
@@ -234,6 +242,7 @@ export default function Jobs() {
           onFormDescriptionChange={onFormDescriptionChange}
           name={'Company Name'}
           description={'Company Position'}
+          disabledButton={disabledButton}
         />
       : ''}
       <PageContainer>

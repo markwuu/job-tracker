@@ -87,7 +87,7 @@ const Modal = styled.div`
 
 `;
 
-export default function Form({CloseCreateModal, PostCreate, formNameValue, onFormNameChange, formDescriptionValue, onFormDescriptionChange, name, description}) {
+export default function Form({CloseCreateModal, PostCreate, formNameValue, onFormNameChange, formDescriptionValue, onFormDescriptionChange, name, description, disabledButton}) {
 
     return (
       <FormContainer>
@@ -105,7 +105,7 @@ export default function Form({CloseCreateModal, PostCreate, formNameValue, onFor
                     {description}:
                 </label>
                 <input type="text" name="description" value={formDescriptionValue} onChange={onFormDescriptionChange}/>
-                <input type="submit" value="Submit" onClick={PostCreate} />
+                <input type="submit" value="Submit" disabled={disabledButton} onClick={PostCreate} />
             </Modal>
         </FormBox>
       </FormContainer>
