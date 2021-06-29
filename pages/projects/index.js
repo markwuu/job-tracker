@@ -150,6 +150,7 @@ export default function Projects() {
   const [displayForm, setDisplayForm] = useState(false);
   const [formNameValue, setFormNameValue] = useState('');
   const [formDescriptionValue, setFormDescriptionValue] = useState('');
+  const [disabledButton, setDisabledButton] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -214,10 +215,16 @@ export default function Projects() {
   }
 
   const onFormNameChange = (event) => {
-    setFormNameValue(event.target.value)
+    if(formDescriptionValue){
+      setDisabledButton(false);
+    }
+    setFormNameValue(event.target.value);
   }
 
   const onFormDescriptionChange = (event) => {
+    if(formNameValue){
+      setDisabledButton(false);
+    }
     setFormDescriptionValue(event.target.value)
   }
 
@@ -233,6 +240,7 @@ export default function Projects() {
           onFormDescriptionChange={onFormDescriptionChange}
           name={'Project Name'}
           description={'Project Description'}
+          disabledButton={disabledButton}
         />
       : ''}
       <PageContainer>
