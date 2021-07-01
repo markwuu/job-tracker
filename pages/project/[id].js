@@ -56,14 +56,16 @@ const Project = () => {
   const [session, loading] = useSession();
   const emptyProject = {title: '', description: '', status: ''};
   const [project, setProject] = useState(emptyProject);
+  const [projectId, setProjectId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`/api/project/${id}`);
       const json = await res.json();
 
-      if(json.data) {
+      if(json.data[0]) {
         setProject(json.data[0])
+        setProjectId(json.data[0]._id);
       }
     }
 
@@ -78,6 +80,25 @@ const Project = () => {
         <h1>You arent signed in, please sign in first</h1>
       </>
     )
+  }
+
+  const updateProject = async () => {
+    const res = await fetch(`/api/project/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        id: projectId,
+        title: 'new title',
+        description: 'new description',
+        github: 'github link',
+        website: 'website link',
+        status: 'complete',
+        image: 'image link',
+        video: 'video link'
+      })
+    });
+
+    const json = await res.json();
+    console.log('json', json);
   }
 
   return (
@@ -96,6 +117,7 @@ const Project = () => {
             ) : ''
           }
         </ProjectContainer>
+        <button onClick={updateProject}>click me</button>
       </PageContainer>
     </Layout>
   )
