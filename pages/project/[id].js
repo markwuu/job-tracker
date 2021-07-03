@@ -57,9 +57,13 @@ const Project = () => {
   const emptyProject = {title: '', description: '', status: ''};
   const [project, setProject] = useState(emptyProject);
   const [projectId, setProjectId] = useState(null);
-
-  const [formTitleValue, setFormTitleValue] = useState('');
-  const [formDescriptionValue, setFormDescriptionValue] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [githubLink, setGithubLink] = useState(null);
+  const [websiteLink, setWebsiteLink] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [imageLink, setImageLink] = useState(null);
+  const [videoLink, setVideoLink] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -85,12 +89,32 @@ const Project = () => {
     )
   }
 
-  const onFormNameChange = (event) => {
-    setFormTitleValue(event.target.value);
+  const onFormTitleChange = (event) => {
+    setTitle(event.target.value);
   }
 
   const onFormDescriptionChange = (event) => {
-    setFormDescriptionValue(event.target.value)
+    setDescription(event.target.value)
+  }
+
+  const onFormGithubLinkChange = (event) => {
+    setGithubLink(event.target.value)
+  }
+
+  const onFormWebsiteLinkChange = (event) => {
+    setWebsiteLink(event.target.value)
+  }
+
+  const onFormStatusChange = (event) => {
+    setStatus(event.target.value)
+  }
+
+  const onFormImageLinkChange = (event) => {
+    setImageLink(event.target.value)
+  }
+
+  const onFormVideoLinkChange = (event) => {
+    setVideoLink(event.target.value)
   }
 
   const updateProject = async () => {
@@ -98,13 +122,13 @@ const Project = () => {
       method: 'POST',
       body: JSON.stringify({
         id: projectId,
-        title: formTitleValue,
-        description: formDescriptionValue,
-        github: 'github link',
-        website: 'website link',
-        status: 'complete',
-        image: 'image link',
-        video: 'video link'
+        title: title,
+        description: description,
+        github: githubLink,
+        website: websiteLink,
+        status: status,
+        image: imageLink,
+        video: videoLink
       })
     });
 
@@ -129,20 +153,49 @@ const Project = () => {
             ) : ''
           }
         </ProjectContainer>
-
-
+        {/* title */}
         <label>
             title
         </label>
-        <input type="text" name="name" value={formTitleValue} onChange={onFormNameChange}/>
+        <input type="text" name="name" value={title} onChange={onFormTitleChange}/>
+        {/* end title */}
+        {/* description */}
         <label>
             description
         </label>
-        <input type="text" name="description" value={formDescriptionValue} onChange={onFormDescriptionChange}/>
+        <input type="text" name="description" value={description} onChange={onFormDescriptionChange}/>
+        {/* end description */}
+        {/* github */}
+        <label>
+            github
+        </label>
+        <input type="text" name={githubLink} value={githubLink} onChange={onFormGithubLinkChange}/>
+        {/* end github */}
+        {/* websitelink */}
+        <label>
+            website
+        </label>
+        <input type="text" name={websiteLink} value={websiteLink} onChange={onFormWebsiteLinkChange}/>
+        {/* end website link */}
+        {/* status */}
+        <label>
+            status
+        </label>
+        <input type="text" name={status} value={status} onChange={onFormStatusChange}/>
+        {/* end status */}
+        {/* image */}
+        <label>
+            image
+        </label>
+        <input type="text" name={imageLink} value={imageLink} onChange={onFormImageLinkChange}/>
+        {/* end image */}
+        {/* video */}
+        <label>
+            video
+        </label>
+        <input type="text" name={videoLink} value={videoLink} onChange={onFormVideoLinkChange}/>
+        {/* end video */}
         <input type="submit" value="Submit" onClick={updateProject} />
-
-
-
       </PageContainer>
     </Layout>
   )
