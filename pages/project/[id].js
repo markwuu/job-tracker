@@ -110,7 +110,7 @@ const Project = () => {
 
     const json = await res.json();
     console.log('json', json);
-
+    router.reload();
   }
 
   return (
