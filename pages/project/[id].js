@@ -58,6 +58,9 @@ const Project = () => {
   const [project, setProject] = useState(emptyProject);
   const [projectId, setProjectId] = useState(null);
 
+  const [formTitleValue, setFormTitleValue] = useState('');
+  const [formDescriptionValue, setFormDescriptionValue] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`/api/project/${id}`);
@@ -82,13 +85,21 @@ const Project = () => {
     )
   }
 
+  const onFormNameChange = (event) => {
+    setFormTitleValue(event.target.value);
+  }
+
+  const onFormDescriptionChange = (event) => {
+    setFormDescriptionValue(event.target.value)
+  }
+
   const updateProject = async () => {
     const res = await fetch(`/api/project/${id}`, {
       method: 'POST',
       body: JSON.stringify({
         id: projectId,
-        title: 'new title',
-        description: 'new description',
+        title: formTitleValue,
+        description: formDescriptionValue,
         github: 'github link',
         website: 'website link',
         status: 'complete',
@@ -99,6 +110,7 @@ const Project = () => {
 
     const json = await res.json();
     console.log('json', json);
+
   }
 
   return (
@@ -117,7 +129,20 @@ const Project = () => {
             ) : ''
           }
         </ProjectContainer>
-        <button onClick={updateProject}>click me</button>
+
+
+        <label>
+            title
+        </label>
+        <input type="text" name="name" value={formTitleValue} onChange={onFormNameChange}/>
+        <label>
+            description
+        </label>
+        <input type="text" name="description" value={formDescriptionValue} onChange={onFormDescriptionChange}/>
+        <input type="submit" value="Submit" onClick={updateProject} />
+
+
+
       </PageContainer>
     </Layout>
   )
