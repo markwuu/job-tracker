@@ -5,10 +5,11 @@ import Layout from '../../components/layout';
 import styled from 'styled-components';
 
 const PageContainer= styled.div`
-  border: 1px solid black;
+  border: 10px solid black;
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 80px);
 `;
 
 const OuterTitleContainer = styled.div`
@@ -50,6 +51,11 @@ const ProjectContainer= styled.div`
   }
 `;
 
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Project = () => {
   const router = useRouter()
   const { id } = router.query
@@ -64,6 +70,7 @@ const Project = () => {
   const [status, setStatus] = useState(null);
   const [imageLink, setImageLink] = useState(null);
   const [videoLink, setVideoLink] = useState(null);
+  const [editStatus, setEditStatus] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -137,65 +144,70 @@ const Project = () => {
     router.reload();
   }
 
+  const displayEditForm = () => {
+    setEditStatus(true);
+  }
+
+  const displayProjectCard = () => {
+    setEditStatus(false);
+  }
+
   return (
     <Layout page={null}>
       <PageContainer>
-        <OuterTitleContainer>
-          <InnerTitleContainer>
-            <h1>{project && project.title ? project.title : ''}</h1>
-          </InnerTitleContainer>
-        </OuterTitleContainer>
-        <ProjectContainer>
-          <p>{project && project.description ? project.description : ''}</p>
-          {
-            project && project.status ? (
-              <p>{project.status === 'incomplete' ? 'Not finished' : 'Finished'}</p>
-            ) : ''
-          }
-        </ProjectContainer>
-        {/* title */}
-        <label>
-            title
-        </label>
-        <input type="text" name="name" value={title} onChange={onFormTitleChange}/>
-        {/* end title */}
-        {/* description */}
-        <label>
-            description
-        </label>
-        <input type="text" name="description" value={description} onChange={onFormDescriptionChange}/>
-        {/* end description */}
-        {/* github */}
-        <label>
-            github
-        </label>
-        <input type="text" name={githubLink} value={githubLink} onChange={onFormGithubLinkChange}/>
-        {/* end github */}
-        {/* websitelink */}
-        <label>
-            website
-        </label>
-        <input type="text" name={websiteLink} value={websiteLink} onChange={onFormWebsiteLinkChange}/>
-        {/* end website link */}
-        {/* status */}
-        <label>
-            status
-        </label>
-        <input type="text" name={status} value={status} onChange={onFormStatusChange}/>
-        {/* end status */}
-        {/* image */}
-        <label>
-            image
-        </label>
-        <input type="text" name={imageLink} value={imageLink} onChange={onFormImageLinkChange}/>
-        {/* end image */}
-        {/* video */}
-        <label>
-            video
-        </label>
-        <input type="text" name={videoLink} value={videoLink} onChange={onFormVideoLinkChange}/>
-        {/* end video */}
-        <input type="submit" value="Submit" onClick={updateProject} />
+        {
+          !editStatus ? (
+            <div>
+              <OuterTitleContainer>
+                <InnerTitleContainer>
+                  <h1>{project && project.title ? project.title : ''}</h1>
+                  <button onClick={displayEditForm}>Edit</button>
+                </InnerTitleContainer>
+              </OuterTitleContainer>
+              <ProjectContainer>
+                <p>{project && project.description ? project.description : ''}</p>
+                {
+                  project && project.status ? (
+                    <p>{project.status === 'incomplete' ? 'Not finished' : 'Finished'}</p>
+                  ) : ''
+                }
+              </ProjectContainer>
+            </div>
+          ) : (
+            <Form>
+              <label>
+                  title
+              </label>
+              <input type="text" name="name" value={title} onChange={onFormTitleChange}/>
+              <label>
+                  description
+              </label>
+              <input type="text" name="description" value={description} onChange={onFormDescriptionChange}/>
+              <label>
+                  github
+              </label>
+              <input type="text" name={githubLink} value={githubLink} onChange={onFormGithubLinkChange}/>
+              <label>
+                  website
+              </label>
+              <input type="text" name={websiteLink} value={websiteLink} onChange={onFormWebsiteLinkChange}/>
+              <label>
+                  status
+              </label>
+              <input type="text" name={status} value={status} onChange={onFormStatusChange}/>
+              <label>
+                  image
+              </label>
+              <input type="text" name={imageLink} value={imageLink} onChange={onFormImageLinkChange}/>
+              <label>
+                  video
+              </label>
+              <input type="text" name={videoLink} value={videoLink} onChange={onFormVideoLinkChange}/>
+              <input type="submit" value="Submit" onClick={updateProject} />
+              <button onClick={displayProjectCard}>Close</button>
+            </Form>
+          )
+        }
       </PageContainer>
     </Layout>
   )
