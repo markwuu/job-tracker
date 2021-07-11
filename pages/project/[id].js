@@ -5,11 +5,18 @@ import Layout from '../../components/layout';
 import styled from 'styled-components';
 
 const PageContainer= styled.div`
-  border: 10px solid black;
+  border: 1px solid black;
   align-items: center;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 80px);
+  justify-content: center;
+`;
+
+const Container= styled.div`
+  border: 1px solid black;
+  min-height: 500px;
+  min-width: 250px;
 `;
 
 const OuterTitleContainer = styled.div`
@@ -54,6 +61,13 @@ const ProjectContainer= styled.div`
 const Form = styled.div`
   display: flex;
   flex-direction: column;
+  border: 1px solid yellow;
+  min-height: 500px;
+  min-width: 250px;
+
+  label {
+    border: 1px solid black;
+  }
 `;
 
 const Project = () => {
@@ -71,6 +85,8 @@ const Project = () => {
   const [imageLink, setImageLink] = useState(null);
   const [videoLink, setVideoLink] = useState(null);
   const [editStatus, setEditStatus] = useState(false);
+
+  console.log('project', project);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -157,7 +173,7 @@ const Project = () => {
       <PageContainer>
         {
           !editStatus ? (
-            <div>
+            <Container>
               <OuterTitleContainer>
                 <InnerTitleContainer>
                   <h1>{project && project.title ? project.title : ''}</h1>
@@ -172,13 +188,17 @@ const Project = () => {
                   ) : ''
                 }
               </ProjectContainer>
-            </div>
+            </Container>
           ) : (
             <Form>
+              <div>
+                Update project
+              </div>
               <label>
                   title
               </label>
               <input type="text" name="name" value={title} onChange={onFormTitleChange}/>
+
               <label>
                   description
               </label>
@@ -204,7 +224,7 @@ const Project = () => {
               </label>
               <input type="text" name={videoLink} value={videoLink} onChange={onFormVideoLinkChange}/>
               <input type="submit" value="Submit" onClick={updateProject} />
-              <button onClick={displayProjectCard}>Close</button>
+              <button onClick={displayProjectCard}>Cancel</button>
             </Form>
           )
         }
