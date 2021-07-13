@@ -5,22 +5,21 @@ import Layout from '../../components/layout';
 import styled from 'styled-components';
 
 const PageContainer= styled.div`
-  border: 0px solid black;
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 80px);
   justify-content: center;
 `;
 
 const Container= styled.div`
-  border: 1px solid black;
   min-height: 500px;
   min-width: 250px;
+  background-color: white;
+  border-radius: 3px;
+  padding: 20px 40px 40px 40px;
 `;
 
 const OuterTitleContainer = styled.div`
-  border: 1px solid black;
   display: flex;
   height: 80px;
   margin: 0;
@@ -32,7 +31,6 @@ const OuterTitleContainer = styled.div`
 `;
 
 const InnerTitleContainer = styled.div`
-  border: 1px solid black;
   margin: auto 0;
   font-size: 40px;
   font-weight: 400;
@@ -43,15 +41,41 @@ const InnerTitleContainer = styled.div`
   align-items: center;
 
   h1 {
-    font-size: 34px;
+    font-size: 25px;
+    text-transform: uppercase;
+  }
+
+  button {
+    background: #ff9b7d;
+    color: white;
+    padding: 10px;
+    min-width: 100px;
+    text-align: center;
+    border-radius: 3.5px;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    height: 30px;
   }
 `;
 
 const ProjectContainer= styled.div`
-  border: 1px solid black;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   width: 750px;
+  padding-top: 30px;
+
+  p {
+    width: 500px;
+  }
+
+  span {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
 
   @media (max-width: 1200px) {
     width: 600px;
@@ -61,7 +85,6 @@ const ProjectContainer= styled.div`
 const Form = styled.div`
   display: flex;
   flex-direction: column;
-  /* border: 1px solid yellow; */
   min-width: 250px;
   min-width: 250px;
   background-color: white;
@@ -94,9 +117,6 @@ const Form = styled.div`
     text-align: center;
     border-radius: 3.5px;
     font-size: 12px;
-    -webkit-letter-spacing: 0.2px;
-    -moz-letter-spacing: 0.2px;
-    -ms-letter-spacing: 0.2px;
     letter-spacing: 0.2px;
     border: none;
     text-transform: uppercase;
@@ -116,9 +136,6 @@ const Form = styled.div`
     text-align: center;
     border-radius: 3.5px;
     font-size: 12px;
-    -webkit-letter-spacing: 0.2px;
-    -moz-letter-spacing: 0.2px;
-    -ms-letter-spacing: 0.2px;
     letter-spacing: 0.2px;
     border: none;
     text-transform: uppercase;
@@ -242,12 +259,10 @@ const Project = () => {
                 </InnerTitleContainer>
               </OuterTitleContainer>
               <ProjectContainer>
-                <p>{project && project.description ? project.description : ''}</p>
-                {
-                  project && project.status ? (
-                    <p>{project.status === 'incomplete' ? 'Not finished' : 'Finished'}</p>
-                  ) : ''
-                }
+                <p><span>Description:</span> {project && project.description ? project.description : ''}</p>
+                <p><span>Github:</span> {project && project.github ? project.github : ''}</p>
+                <p><span>Website:</span> {project && project.website ? project.website : ''}</p>
+                <p><span>Video:</span> {project && project.video ? project.video : ''}</p>
               </ProjectContainer>
             </Container>
           ) : (
