@@ -116,12 +116,12 @@ const Form = styled.div`
     min-width: 100px;
     text-align: center;
     border-radius: 3.5px;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.2px;
     border: none;
     text-transform: uppercase;
     cursor: pointer;
-    height: 35px;
+    height: 30px;
 
     &:hover {
       background: #817da6;
@@ -135,12 +135,12 @@ const Form = styled.div`
     min-width: 100px;
     text-align: center;
     border-radius: 3.5px;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.2px;
     border: none;
     text-transform: uppercase;
     cursor: pointer;
-    height: 35px;
+    height: 30px;
 
     &:hover {
       background: #ae4f4f;
