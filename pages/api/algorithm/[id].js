@@ -42,7 +42,7 @@ export default async (req, res) => {
 
             res.send({ data: updatedAlgorithm });
         } else {
-            res.send({ error: "You need to be signed in to view project data" });
+            res.send({ error: "You need to be signed in to view algorithm data" });
         }
     }
 }
