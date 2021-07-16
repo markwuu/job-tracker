@@ -26,7 +26,7 @@ export default async (req, res) => {
         if(session){
             const { userId } = session;
             const { db } = await connectToDatabase();
-            const { id, name, description } = JSON.parse(req.body);
+            const { id, name, description, link } = JSON.parse(req.body);
 
             //update algorithm
             const updatedAlgorithm = await db
@@ -35,7 +35,8 @@ export default async (req, res) => {
                     {_id: mongoose.Types.ObjectId(id)},
                     {$set: {
                         name,
-                        description
+                        description,
+                        link
                     }}
                 )
             console.log('updatedAlgorithm', updatedAlgorithm);
