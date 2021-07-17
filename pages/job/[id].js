@@ -239,7 +239,7 @@ const Job = () => {
             <Container>
               <OuterTitleContainer>
                 <InnerTitleContainer>
-                  <h1>{job && job.company ? job.company : ''}</h1>
+                  <h1>Company: {job && job.company ? job.company : ''}</h1>
                   <button onClick={displayEditForm}>Edit</button>
                 </InnerTitleContainer>
               </OuterTitleContainer>

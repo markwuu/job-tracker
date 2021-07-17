@@ -254,7 +254,7 @@ const Project = () => {
             <Container>
               <OuterTitleContainer>
                 <InnerTitleContainer>
-                  <h1>{project && project.title ? project.title : ''}</h1>
+                  <h1>Project: {project && project.title ? project.title : ''}</h1>
                   <button onClick={displayEditForm}>Edit</button>
                 </InnerTitleContainer>
               </OuterTitleContainer>

@@ -228,7 +228,7 @@ const Algorithm = () => {
             <Container>
               <OuterTitleContainer>
                 <InnerTitleContainer>
-                  <h1>{algorithm && algorithm.name ? algorithm.name : ''}</h1>
+                  <h1>Algorithm: {algorithm && algorithm.name ? algorithm.name : ''}</h1>
                   <button onClick={displayEditForm}>Edit</button>
                 </InnerTitleContainer>
               </OuterTitleContainer>
