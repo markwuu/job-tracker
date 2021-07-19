@@ -25,7 +25,7 @@ const ProfileContainer = styled.div`
 const ProfileImageContainer = styled.div`
   width: 45px;
   height: 45px;
-  border-radius: 12px;
+  border-radius: 25px;
   background-position: center;
   background-size: contain;
   border: 2px solid #858A93;
