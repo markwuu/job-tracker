@@ -10,11 +10,12 @@ export default async (req, res) => {
             const { userId } = session;
             const { db } = await connectToDatabase();
 
-            //get settings
+            //get users settings
             const settings = await db
-                .collection("settings")
-                .find({_user: userId})
+                .collection("users")
+                .find({_id: mongoose.Types.ObjectId(userId)})
                 .toArray();
+            console.log('🚀 => settings', settings);
 
             const data = {
                 settings
