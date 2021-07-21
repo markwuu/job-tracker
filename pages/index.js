@@ -86,7 +86,7 @@ const Card = styled.div`
   }
 `;
 
-export default function Algorithms() {
+export default function Dashboard() {
   const [session, loading] = useSession();
   const router = useRouter();
   const [algorithmsCount, setAlgorithmsCount] = useState(null);
