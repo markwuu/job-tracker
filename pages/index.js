@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react';
-import { useSession } from "next-auth/client";
+import { signIn, signOut, useSession } from "next-auth/client";
 import Link from "next/link";
 import Layout from '../components/layout';
+import LoginCover from '../components/LoginCover';
 import styled from 'styled-components';
 import { useRouter } from 'next/router'
 
@@ -98,11 +99,12 @@ export default function Dashboard() {
       const res = await fetch("/api/dashboard");
       const json = await res.json();
       console.log(json.data);
-      setAlgorithmsCount(json.data.algorithms);
-      setJobsCount(json.data.jobs);
-      setProjectsCount(json.data.projects);
+      if(json.data){
+        setAlgorithmsCount(json.data.algorithms);
+        setJobsCount(json.data.jobs);
+        setProjectsCount(json.data.projects);
+      }
     }
-
 
     fetchData();
   }, [session]);
@@ -112,7 +114,7 @@ export default function Dashboard() {
   if(!session) {
     return (
       <>
-        <h1>You arent signed in, please sign in first</h1>
+        <LoginCover signIn={signIn}/>
       </>
     )
   }
