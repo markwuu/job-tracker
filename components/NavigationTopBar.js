@@ -1,8 +1,8 @@
 import { signIn, signOut, useSession } from "next-auth/client";
 import styled from "styled-components";
+import router, { useRouter } from 'next/router'
 
 const SignInContainer = styled.div`
-  /* border: 1px solid black; */
   height: 80px;
   display: flex;
   justify-content: flex-end;
@@ -10,7 +10,6 @@ const SignInContainer = styled.div`
 `;
 
 const ProfileContainer = styled.div`
-  /* border: 1px solid black; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -33,6 +32,12 @@ const ProfileImageContainer = styled.div`
 
 export default function NavigationTopBar() {
     const [session, loading] = useSession();
+    const router = useRouter();
+
+    const signOutAndRedirect = () => {
+      signOut();
+      router.push('/');
+    }
 
     return (
       <SignInContainer>
@@ -45,7 +50,7 @@ export default function NavigationTopBar() {
         {
             session && (
                 <>
-                    {/* <button onClick={signOut}>Sign Out</button> */}
+                    <button onClick={signOutAndRedirect}>Sign Out</button>
                     <ProfileContainer>
                       <p>{session.user.name}</p>
                       <ProfileImageContainer style={{backgroundImage: `url(${session.user.image})`}}></ProfileImageContainer>
