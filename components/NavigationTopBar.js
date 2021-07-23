@@ -1,6 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/client";
 import styled from "styled-components";
 import router, { useRouter } from 'next/router'
+import { useState } from 'react';
 
 const SignInContainer = styled.div`
   height: 80px;
@@ -30,13 +31,26 @@ const ProfileImageContainer = styled.div`
   border: 2px solid #858A93;
 `;
 
+const SettingsMenu = styled.div`
+  width: 175px;
+  height: 175px;
+  border: 1px solid black;
+  position: absolute;
+  top: 67px;
+`;
+
 export default function NavigationTopBar() {
     const [session, loading] = useSession();
     const router = useRouter();
+    const [displaySettingsMenu, setDisplaySettingsMenu] = useState(false);
 
     const signOutAndRedirect = () => {
       signOut();
       router.push('/');
+    }
+
+    const toggleSettingsMenu = () => {
+      setDisplaySettingsMenu(!displaySettingsMenu);
     }
 
     return (
@@ -50,10 +64,15 @@ export default function NavigationTopBar() {
         {
             session && (
                 <>
-                    <button onClick={signOutAndRedirect}>Sign Out</button>
+                    {/* <button onClick={signOutAndRedirect}>Sign Out</button> */}
+                    { displaySettingsMenu ?
+                      <SettingsMenu>
+                        <div></div>
+                      </SettingsMenu>
+                    : ''}
                     <ProfileContainer>
-                      <p>{session.user.name}</p>
-                      <ProfileImageContainer style={{backgroundImage: `url(${session.user.image})`}}></ProfileImageContainer>
+                      {/* <p>{session.user.name}</p> */}
+                      <ProfileImageContainer onClick={toggleSettingsMenu} style={{backgroundImage: `url(${session.user.image})`}}></ProfileImageContainer>
                     </ProfileContainer>
                 </>
             )
