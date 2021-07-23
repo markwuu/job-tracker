@@ -1,6 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/client";
 import styled from "styled-components";
-import router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { useState } from 'react';
 
 const SignInContainer = styled.div`
@@ -32,11 +32,55 @@ const ProfileImageContainer = styled.div`
 `;
 
 const SettingsMenu = styled.div`
-  width: 175px;
-  height: 175px;
-  border: 1px solid black;
+  width: 150px;
+  border: 1px solid #cad1dc;
   position: absolute;
   top: 67px;
+  background-color: white;
+  border-radius: 5px;
+  font-size: 12px;
+
+  div {
+    padding: 15px 10px;
+  }
+
+  a {
+    color: black;
+  }
+
+  #top-bar {
+    border-bottom: 1px solid #cad1dc;
+
+    span {
+      font-weight: 600;
+    }
+
+    &:hover {
+      background: #2976bb;
+      cursor: pointer;
+      color: white;
+      border-radius: 5px 5px 0px 0px;
+    }
+  }
+
+  #mid-bar {
+    border-bottom: 1px solid #cad1dc;
+
+    &:hover {
+      background: #2976bb;
+      cursor: pointer;
+      color: white;
+    }
+  }
+
+  #bottom-bar {
+    &:hover {
+      background: #2976bb;
+      cursor: pointer;
+      color: white;
+      border-radius: 0px 0px 5px 5px;
+    }
+  }
 `;
 
 export default function NavigationTopBar() {
@@ -53,6 +97,10 @@ export default function NavigationTopBar() {
       setDisplaySettingsMenu(!displaySettingsMenu);
     }
 
+    const redirectToSettings = () => {
+      router.push('/settings');
+    }
+
     return (
       <SignInContainer>
         {
@@ -64,14 +112,14 @@ export default function NavigationTopBar() {
         {
             session && (
                 <>
-                    {/* <button onClick={signOutAndRedirect}>Sign Out</button> */}
                     { displaySettingsMenu ?
                       <SettingsMenu>
-                        <div></div>
+                        <div id="top-bar">Signed in as <span>{session.user.name}</span></div>
+                        <div id="mid-bar" onClick={redirectToSettings}>Settings</div>
+                        <div id="bottom-bar" onClick={signOutAndRedirect}>Logout</div>
                       </SettingsMenu>
                     : ''}
                     <ProfileContainer>
-                      {/* <p>{session.user.name}</p> */}
                       <ProfileImageContainer onClick={toggleSettingsMenu} style={{backgroundImage: `url(${session.user.image})`}}></ProfileImageContainer>
                     </ProfileContainer>
                 </>
