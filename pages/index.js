@@ -19,8 +19,8 @@ const OuterTitleContainer = styled.div`
   margin: 0;
   width: 900px;
 
-  @media (max-width: 1200px) {
-    width: 600px;
+  @media (max-width: 1250px) {
+    width: auto;
   }
 `;
 
@@ -28,7 +28,7 @@ const InnerTitleContainer = styled.div`
   margin: auto 0;
   font-size: 40px;
   font-weight: 400;
-  width: 600px;
+  width: 900px;
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -37,6 +37,11 @@ const InnerTitleContainer = styled.div`
   h1 {
     font-size: 34px;
   }
+
+  @media (max-width: 1250px) {
+    justify-content: center;
+    width: auto;
+  }
 `;
 
 const CardsContainer= styled.div`
@@ -44,16 +49,22 @@ const CardsContainer= styled.div`
   justify-content: space-between;
   width: 900px;
 
-  @media (max-width: 1200px) {
-    width: 600px;
+  @media (max-width: 1250px) {
+    width: auto;
   }
 `;
 
 const CardsListContainer= styled.div`
   display: flex;
   flex-direction: row;
-  width: 800px;
+  width: 900px;
   justify-content: space-between;
+
+  @media (max-width: 1250px) {
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Card = styled.div`
@@ -67,7 +78,6 @@ const Card = styled.div`
   margin: 0 0 25px 0;
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
 
   a {
     color: black;
@@ -76,14 +86,6 @@ const Card = styled.div`
   p {
     color: black;
     font-size: 20px;
-  }
-
-  &:hover {
-      background: #e1e5ea;
-  }
-
-  @media (max-width: 890px) {
-    height: 100px;
   }
 `;
 
