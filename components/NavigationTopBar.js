@@ -41,7 +41,7 @@ const SettingsMenu = styled.div`
   font-size: 12px;
 
   div {
-    padding: 15px 10px;
+    padding: 10px;
   }
 
   a {
@@ -53,13 +53,6 @@ const SettingsMenu = styled.div`
 
     span {
       font-weight: 600;
-    }
-
-    &:hover {
-      background: #2976bb;
-      cursor: pointer;
-      color: white;
-      border-radius: 5px 5px 0px 0px;
     }
   }
 
