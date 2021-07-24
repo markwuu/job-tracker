@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useSession } from "next-auth/client";
 import Layout from '../../components/layout';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const PageContainer= styled.div`
   align-items: center;
@@ -260,9 +261,9 @@ const Project = () => {
               </OuterTitleContainer>
               <ProjectContainer>
                 <p><span>Description:</span> {project && project.description ? project.description : ''}</p>
-                <p><span>Github:</span> {project && project.github ? project.github : ''}</p>
-                <p><span>Website:</span> {project && project.website ? project.website : ''}</p>
-                <p><span>Video:</span> {project && project.video ? project.video : ''}</p>
+                <p><span>Github:</span> {project && project.github ? <Link href={project.github}><a>{project.github}</a></Link> : ''}</p>
+                <p><span>Website:</span> {project && project.website ? <Link href={project.website}><a>{project.website}</a></Link> : ''}</p>
+                <p><span>Video:</span> {project && project.video ? <Link href={project.video}><a>{project.video}</a></Link> : ''}</p>
               </ProjectContainer>
             </Container>
           ) : (

@@ -7,7 +7,7 @@ const SignInContainer = styled.div`
   height: 80px;
   display: flex;
   justify-content: flex-end;
-  padding: 0 10px 0 0;
+  padding: 0 25px 0 0;
 `;
 
 const ProfileContainer = styled.div`

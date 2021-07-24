@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useSession } from "next-auth/client";
 import Layout from '../../components/layout';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const PageContainer= styled.div`
   align-items: center;
@@ -234,7 +235,7 @@ const Algorithm = () => {
               </OuterTitleContainer>
               <AlgorithmContainer>
                 <p><span>Description:</span> {algorithm && algorithm.description ? algorithm.description : ''}</p>
-                <p><span>Link:</span> {algorithm && algorithm.link ? algorithm.link : ''}</p>
+                <p><span>Link:</span> {algorithm && algorithm.link ? <Link href={algorithm.link}><a>{algorithm.link}</a></Link> : ''}</p>
               </AlgorithmContainer>
             </Container>
           ) : (

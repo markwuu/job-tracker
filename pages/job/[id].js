@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useSession } from "next-auth/client";
 import Layout from '../../components/layout';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const PageContainer= styled.div`
   align-items: center;
@@ -247,7 +248,7 @@ const Job = () => {
                 <p><span>Description:</span> {job && job.description ? job.description : ''}</p>
                 <p><span>Status:</span> {job && job.status ? job.status : ''}</p>
                 <p><span>Offer:</span> {job && job.offer ? job.offer : ''}</p>
-                <p><span>Website:</span> {job && job.website ? job.website : ''}</p>
+                <p><span>Website:</span> {job && job.website ? <Link href={job.website}><a>{job.website}</a></Link> : ''}</p>
               </JobContainer>
             </Container>
           ) : (
