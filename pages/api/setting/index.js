@@ -31,14 +31,14 @@ export default async (req, res) => {
         if(session) {
             const { userId } = session;
             const { db } = await connectToDatabase();
-            const { name } = req.body;
+            const { name, image } = req.body;
 
             // update user profile
             const user = await db
                 .collection("users")
                 .findOneAndUpdate(
                     { _id: mongoose.Types.ObjectId(userId) },
-                    { $set: {"name": name } }
+                    { $set: {"name": name, "image": image } }
                 );
 
             res.send({ data: null });

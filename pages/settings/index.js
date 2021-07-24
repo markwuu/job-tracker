@@ -125,6 +125,7 @@ const Form = styled.div`
 export default function Settings() {
   const [session, loading] = useSession();
   const [formNameValue, setFormNameValue] = useState('');
+  const [formAvatarValue, setFormAvatarValue] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -154,6 +155,10 @@ export default function Settings() {
     setFormNameValue(event.target.value);
   }
 
+  const onFormAvatarChange = (event) => {
+    setFormAvatarValue(event.target.value);
+  }
+
   const updateSettings = async () => {
     const res = await fetch("/api/setting", {
       method: 'POST',
@@ -162,7 +167,8 @@ export default function Settings() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: formNameValue
+        name: formNameValue,
+        image: formAvatarValue
       })
     });
 
@@ -184,6 +190,10 @@ export default function Settings() {
                 Name
             </label>
             <input type="text" name="name" value={formNameValue} onChange={onFormNameChange}/>
+            <label>
+                Avatar
+            </label>
+            <input type="text" name="avatar" value={formAvatarValue} onChange={onFormAvatarChange}/>
           </Form>
         </FormContainer>
       </PageContainer>
