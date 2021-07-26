@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Link from 'next/link';
 
 const NavigationContainer = styled.div`
-  /* border: 1px solid black; */
   min-width: 225px;
   height: 100vh;
   display: flex;
@@ -189,7 +188,7 @@ export default function NavigationPanel({page}) {
           { page !== 'algorithms' ? (
             <Link href="/algorithms">
               <InnerPanelInactive>
-                <a class="panel-word">Algorithmss</a>
+                <a class="panel-word">Algorithms</a>
                 <LogoPanel>
                   <div class="logo algorithm-logo"></div>
                 </LogoPanel>
@@ -198,7 +197,7 @@ export default function NavigationPanel({page}) {
           ) : (
             <Link href="/algorithms">
               <InnerPanelActive>
-                <a class="panel-word">Algorithmss</a>
+                <a class="panel-word">Algorithms</a>
                 <LogoPanel>
                   <div class="logo algorithm-logo"></div>
                 </LogoPanel>
