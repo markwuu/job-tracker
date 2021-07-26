@@ -15,7 +15,6 @@ export default async (req, res) => {
                 .collection("users")
                 .find({_id: mongoose.Types.ObjectId(userId)})
                 .toArray();
-            console.log('🚀 => settings', settings);
 
             const data = {
                 settings

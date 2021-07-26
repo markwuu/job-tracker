@@ -198,7 +198,6 @@ export default function Projects() {
   }
 
   const PostCreate = async () => {
-    console.log('postcreateporject hit')
     const res = await fetch("/api/project", {
       method: 'POST',
       credentials: 'same-origin',

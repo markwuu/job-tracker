@@ -14,7 +14,6 @@ export default async (req, res) => {
             const users = await db
                 .collection("users")
                 .findOne({_id: mongoose.Types.ObjectId(userId)});
-            console.log('users', users);
 
             const data = {
                 algorithms: users.algorithms,

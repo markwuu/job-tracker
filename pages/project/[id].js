@@ -165,8 +165,6 @@ const Project = () => {
   const [videoLink, setVideoLink] = useState(null);
   const [editStatus, setEditStatus] = useState(false);
 
-  console.log('project', project);
-
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`/api/project/${id}`);
@@ -235,7 +233,6 @@ const Project = () => {
     });
 
     const json = await res.json();
-    console.log('json', json);
     router.reload();
   }
 

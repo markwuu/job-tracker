@@ -165,7 +165,6 @@ const Algorithm = () => {
     const fetchData = async () => {
       const res = await fetch(`/api/algorithm/${id}`);
       const json = await res.json();
-      console.log('🚀 => json', json);
 
       if(json.data[0]) {
         setAlgorithm(json.data[0])
