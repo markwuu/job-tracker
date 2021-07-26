@@ -13,6 +13,10 @@ const NavTopPageContainer = styled.div`
   background-color: #f3f7fe;
   margin-left: 225px;
   min-height: 100vh;
+
+  @media (max-width: 600px) {
+    margin-left: 75px;
+  }
 `;
 
 const NextPageContainer = styled.div`

@@ -9,22 +9,76 @@ const NavigationContainer = styled.div`
   flex-direction: column;
   background: #FFFFFF;
   position: fixed;
+
+  @media (max-width: 600px) {
+    min-width: 0px;
+  }
 `;
 
 const Panel = styled.div`
-  /* border: 1px solid black; */
   height: 80px;
   display: flex;
+  margin: 3.5px auto;
+
+  .logo-title {
+    font-size: 21px;
+    margin: 40px 0 0 0;
+    text-transform: uppercase;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
 `;
 
 const LogoPanel = styled.div`
-  /* border: 1px solid black; */
   margin: auto;
-  padding: 10px;
+  padding: 15px;
   min-width: 175px;
   text-align: center;
-  font-size: 21px;
-  text-transform: uppercase;
+
+  .logo {
+    background-image: url("../logo.png");
+    width: 45px;
+    height: 45px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 2px solid #cad1dc;
+    border-radius: 5px;
+
+    @media (min-width: 600px) {
+      display: none;
+    }
+  }
+
+  .dashboard-logo {
+    background-image: url("../dashboard-icon.png");
+  }
+
+  .algorithm-logo {
+    background-image: url("../algorithm-icon.png");
+  }
+
+  .job-logo {
+    background-image: url("../job-icon.png");
+  }
+
+  .project-logo {
+    background-image: url("../project-icon.png");
+  }
+
+  .setting-logo {
+    background-image: url("../setting-icon.png");
+  }
+
+  @media (max-width: 600px) {
+    min-width: 65px;
+  }
+
+  @media (min-width: 600px) {
+    display: none;
+  }
 `;
 
 const InnerPanelActive = styled.div`
@@ -38,6 +92,17 @@ const InnerPanelActive = styled.div`
   font-size: 12px;
   letter-spacing: 0.2px;
   text-transform: uppercase;
+
+  @media (max-width: 600px) {
+    min-width: 0px;
+    padding: 0px;
+    border-radius: 0px;
+
+    .panel-word {
+      display: none;
+    }
+  }
+
 `;
 
 const InnerPanelInactive = styled.div`
@@ -61,6 +126,26 @@ const InnerPanelInactive = styled.div`
   a {
     color: white;
   }
+
+  @media (max-width: 600px) {
+    min-width: 0px;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    /* display: none; */
+    /* border: 1px solid black; */
+
+    .panel-word {
+      display: none;
+    }
+
+    &:hover {
+      background: #d8e9f9;
+      cursor: pointer;
+      padding: 0;
+      border-radius: 0px;
+    }
+  }
 `;
 
 const SettingsPanel = styled.div`
@@ -74,19 +159,28 @@ export default function NavigationPanel({page}) {
   return (
     <NavigationContainer>
         <Panel>
-          <LogoPanel>Job Tracker</LogoPanel>
+          <span class="logo-title">Job Tracker</span>
+          <LogoPanel>
+            <div class="logo"></div>
+          </LogoPanel>
         </Panel>
         <Panel>
           { page !== 'home' ? (
             <Link href="/">
               <InnerPanelInactive>
-                  <a>Dashboard</a>
+                <a class="panel-word">Dashboard</a>
+                <LogoPanel>
+                  <div class="logo dashboard-logo"></div>
+                </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/">
               <InnerPanelActive>
-                <a>Dashboard</a>
+                <a class="panel-word">Dashboard</a>
+                <LogoPanel>
+                  <div class="logo dashboard-logo"></div>
+                </LogoPanel>
               </InnerPanelActive>
             </Link>
           ) }
@@ -95,13 +189,19 @@ export default function NavigationPanel({page}) {
           { page !== 'algorithms' ? (
             <Link href="/algorithms">
               <InnerPanelInactive>
-                  <a>Algorithms</a>
+                <a class="panel-word">Algorithmss</a>
+                <LogoPanel>
+                  <div class="logo algorithm-logo"></div>
+                </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/algorithms">
               <InnerPanelActive>
-                  <a>Algorithms</a>
+                <a class="panel-word">Algorithmss</a>
+                <LogoPanel>
+                  <div class="logo algorithm-logo"></div>
+                </LogoPanel>
               </InnerPanelActive>
             </Link>
           ) }
@@ -110,13 +210,19 @@ export default function NavigationPanel({page}) {
           { page !== 'jobs' ? (
             <Link href="/jobs">
               <InnerPanelInactive>
-                  <a>Jobs</a>
+                <a class="panel-word">Jobs</a>
+                <LogoPanel>
+                  <div class="logo job-logo"></div>
+                </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/jobs">
               <InnerPanelActive>
-                  <a>Jobs</a>
+                <a class="panel-word">Jobs</a>
+                <LogoPanel>
+                  <div class="logo job-logo"></div>
+                </LogoPanel>
               </InnerPanelActive>
             </Link>
           ) }
@@ -125,13 +231,19 @@ export default function NavigationPanel({page}) {
           { page !== 'projects' ? (
             <Link href="/projects">
               <InnerPanelInactive>
-                <a>Projects</a>
+                <a class="panel-word">Projects</a>
+                <LogoPanel>
+                  <div class="logo project-logo"></div>
+                </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/projects">
               <InnerPanelActive>
-                <a>Projects</a>
+                <a class="panel-word">Projects</a>
+                <LogoPanel>
+                  <div class="logo project-logo"></div>
+                </LogoPanel>
               </InnerPanelActive>
             </Link>
           ) }
@@ -140,13 +252,19 @@ export default function NavigationPanel({page}) {
           { page !== 'settings' ? (
             <Link href="/settings">
               <InnerPanelInactive>
-                <a>settings</a>
+                <a class="panel-word">Setting</a>
+                <LogoPanel>
+                  <div class="logo setting-logo"></div>
+                </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/settings">
               <InnerPanelActive>
-                <a>settings</a>
+                <a class="panel-word">Settings</a>
+                <LogoPanel>
+                  <div class="logo setting-logo"></div>
+                </LogoPanel>
               </InnerPanelActive>
             </Link>
           ) }
