@@ -150,6 +150,10 @@ const InnerPanelInactive = styled.div`
 const SettingsPanel = styled.div`
   margin-top: auto;
   display: flex;
+
+  @media (min-width: 600px) {
+    height: 10vh;
+  }
 `;
 
 export default function NavigationPanel({page}) {
