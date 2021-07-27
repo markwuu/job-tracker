@@ -148,7 +148,6 @@ const InnerPanelInactive = styled.div`
 `;
 
 const SettingsPanel = styled.div`
-  height: 10vh;
   margin-top: auto;
   display: flex;
 `;
