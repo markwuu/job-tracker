@@ -17,7 +17,7 @@ const OuterTitleContainer = styled.div`
   display: flex;
   height: 80px;
   margin: 0;
-  width: 900px;
+  width: 750px;
 
   @media (max-width: 1250px) {
     width: auto;
@@ -28,7 +28,7 @@ const InnerTitleContainer = styled.div`
   margin: auto 0;
   font-size: 40px;
   font-weight: 400;
-  width: 900px;
+  width: 750px;
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -47,7 +47,7 @@ const InnerTitleContainer = styled.div`
 const CardsContainer= styled.div`
   display: flex;
   justify-content: space-between;
-  width: 900px;
+  width: 750px;
 
   @media (max-width: 1250px) {
     width: auto;
@@ -57,7 +57,7 @@ const CardsContainer= styled.div`
 const CardsListContainer= styled.div`
   display: flex;
   flex-direction: row;
-  width: 900px;
+  width: 750px;
   justify-content: space-between;
 
   @media (max-width: 1250px) {
@@ -69,11 +69,11 @@ const CardsListContainer= styled.div`
 
 const Card = styled.div`
   border-radius: 5px;
-  width: 250px;
+  width: 200px;
   color: #cad1dc;
   background: #FFFFFF;
   box-shadow: 0 3px 0px 0px;
-  height: 125px;
+  height: 100px;
   padding: 0px 20px;
   margin: 0 0 25px 0;
   display: flex;
