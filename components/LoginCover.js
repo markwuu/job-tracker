@@ -2,7 +2,6 @@ import { signIn, signOut, useSession } from "next-auth/client";
 import styled from "styled-components";
 
 const Cover = styled.div`
-    width: 100vw;
     display: flex;
 `;
 
@@ -11,6 +10,11 @@ const LeftPanel = styled.div`
     width: 50vw;
     height: 100vh;
     background-size: cover;
+
+    @media (max-width: 600px) {
+        width: 100vw;
+        position: absolute;
+    }
 `;
 
 const TransparentCover = styled.div`
@@ -19,34 +23,39 @@ const TransparentCover = styled.div`
     position: absolute;
     background-color: black;
     opacity: 0.3;
+
+    @media (max-width: 600px) {
+        width: 100vw;
+    }
 `;
 
 const RightPanel = styled.div`
     width: 50vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #f5f3ff;
+    text-align: center;
+    border-radius: 13px;
 
     div {
-        width: 350px;
-        /* margin-bottom: 25px; */
-        text-align: center;
-        font-size: 50px;
+        padding: 10px;
+        font-size: 40px;
         letter-spacing: 3px;
         font-weight: 200;
-        /* border: 1px solid black; */
         text-transform: uppercase;
+
+        @media (max-width: 600px) {
+            font-size: 25px;
+        }
     }
 
     p {
-        /* border: 1px solid black; */
+        padding: 0 10px;
     }
 
     button {
-        border: 1px solid black;
         width: 200px;
         margin-top: 25px;
         background-color: #807dff;
@@ -65,6 +74,22 @@ const RightPanel = styled.div`
         &:hover {
             background: #6460f3;
         }
+
+        @media (max-width: 600px) {
+            width: auto;
+        }
+    }
+
+    @media (max-width: 600px) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: auto;
+        min-height: 100px;
+        margin: 130px 50px;
+        opacity: 0.90;
     }
 `;
 
