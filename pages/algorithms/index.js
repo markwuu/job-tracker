@@ -257,7 +257,7 @@ export default function Algorithms() {
             {algorithms.map((algorithm, i) => {
               const link = `/algorithm/${(algorithm.slugTitle).replace(" ","-").toLowerCase()}`;
               return (
-                <Link href={link} style={{color: 'black'}}>
+                <Link href={link} key={i} style={{color: 'black'}}>
                   <Algorithm key={i}>
                     <p>{algorithm.name}</p>
                     <p>{algorithm.description}</p>
@@ -271,7 +271,7 @@ export default function Algorithms() {
             <LogEntries>
               {logs.map((log, i) => {
                 return (
-                  <p>{log.description}</p>
+                  <p key={i}>{log.description}</p>
                 )
               })}
             </LogEntries>

@@ -161,27 +161,27 @@ export default function NavigationPanel({page}) {
   return (
     <NavigationContainer>
         <Panel>
-          <span class="logo-title">Job Tracker</span>
+          <span className="logo-title">Job Tracker</span>
           <LogoPanel>
-            <div class="logo"></div>
+            <div className="logo"></div>
           </LogoPanel>
         </Panel>
         <Panel>
           { page !== 'home' ? (
             <Link href="/">
               <InnerPanelInactive>
-                <a class="panel-word">Dashboard</a>
+                <a className="panel-word">Dashboard</a>
                 <LogoPanel>
-                  <div class="logo dashboard-logo"></div>
+                  <div className="logo dashboard-logo"></div>
                 </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/">
               <InnerPanelActive>
-                <a class="panel-word">Dashboard</a>
+                <a className="panel-word">Dashboard</a>
                 <LogoPanel>
-                  <div class="logo dashboard-logo"></div>
+                  <div className="logo dashboard-logo"></div>
                 </LogoPanel>
               </InnerPanelActive>
             </Link>
@@ -191,18 +191,18 @@ export default function NavigationPanel({page}) {
           { page !== 'algorithms' ? (
             <Link href="/algorithms">
               <InnerPanelInactive>
-                <a class="panel-word">Algorithms</a>
+                <a className="panel-word">Algorithms</a>
                 <LogoPanel>
-                  <div class="logo algorithm-logo"></div>
+                  <div className="logo algorithm-logo"></div>
                 </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/algorithms">
               <InnerPanelActive>
-                <a class="panel-word">Algorithms</a>
+                <a className="panel-word">Algorithms</a>
                 <LogoPanel>
-                  <div class="logo algorithm-logo"></div>
+                  <div className="logo algorithm-logo"></div>
                 </LogoPanel>
               </InnerPanelActive>
             </Link>
@@ -212,18 +212,18 @@ export default function NavigationPanel({page}) {
           { page !== 'jobs' ? (
             <Link href="/jobs">
               <InnerPanelInactive>
-                <a class="panel-word">Jobs</a>
+                <a className="panel-word">Jobs</a>
                 <LogoPanel>
-                  <div class="logo job-logo"></div>
+                  <div className="logo job-logo"></div>
                 </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/jobs">
               <InnerPanelActive>
-                <a class="panel-word">Jobs</a>
+                <a className="panel-word">Jobs</a>
                 <LogoPanel>
-                  <div class="logo job-logo"></div>
+                  <div className="logo job-logo"></div>
                 </LogoPanel>
               </InnerPanelActive>
             </Link>
@@ -233,18 +233,18 @@ export default function NavigationPanel({page}) {
           { page !== 'projects' ? (
             <Link href="/projects">
               <InnerPanelInactive>
-                <a class="panel-word">Projects</a>
+                <a className="panel-word">Projects</a>
                 <LogoPanel>
-                  <div class="logo project-logo"></div>
+                  <div className="logo project-logo"></div>
                 </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/projects">
               <InnerPanelActive>
-                <a class="panel-word">Projects</a>
+                <a className="panel-word">Projects</a>
                 <LogoPanel>
-                  <div class="logo project-logo"></div>
+                  <div className="logo project-logo"></div>
                 </LogoPanel>
               </InnerPanelActive>
             </Link>
@@ -254,18 +254,18 @@ export default function NavigationPanel({page}) {
           { page !== 'settings' ? (
             <Link href="/settings">
               <InnerPanelInactive>
-                <a class="panel-word">Setting</a>
+                <a className="panel-word">Setting</a>
                 <LogoPanel>
-                  <div class="logo setting-logo"></div>
+                  <div className="logo setting-logo"></div>
                 </LogoPanel>
               </InnerPanelInactive>
             </Link>
           ) : (
             <Link href="/settings">
               <InnerPanelActive>
-                <a class="panel-word">Settings</a>
+                <a className="panel-word">Settings</a>
                 <LogoPanel>
-                  <div class="logo setting-logo"></div>
+                  <div className="logo setting-logo"></div>
                 </LogoPanel>
               </InnerPanelActive>
             </Link>
