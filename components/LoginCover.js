@@ -48,11 +48,16 @@ const RightPanel = styled.div`
 
         @media (max-width: 600px) {
             font-size: 25px;
+            font-weight: 400;
         }
     }
 
     p {
         padding: 0 10px;
+
+        @media (max-width: 600px) {
+            font-size: 16px;
+        }
     }
 
     button {
@@ -90,6 +95,7 @@ const RightPanel = styled.div`
         min-height: 100px;
         margin: 130px 50px;
         opacity: 0.90;
+        box-shadow: 0px 0px 25px 15px #000;
     }
 `;
 
