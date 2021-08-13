@@ -7,27 +7,34 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router'
 
 const PageContainer= styled.div`
-  align-items: center;
+  border: 10px solid black;
+  /* align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; */
+  padding: 0 20px 20px;
+  margin: auto;
+  max-width: 1100px;
 `;
 
 const OuterTitleContainer = styled.div`
+  border: 1px solid black;
   display: flex;
-  height: 80px;
   margin: 0;
-  width: 900px;
+  /* height: 80px; */
+  /* width: 900px; */
 
   @media (max-width: 1200px) {
-    width: 600px;
+    /* width: 600px; */
+    justify-content: center;
   }
 `;
 
 const InnerTitleContainer = styled.div`
+  /* border: 1px solid black; */
   margin: auto 0;
   font-size: 40px;
   font-weight: 400;
-  width: 600px;
+  /* width: 600px; */
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -39,24 +46,28 @@ const InnerTitleContainer = styled.div`
 `;
 
 const AlgorithmsContainer= styled.div`
+  border: 1px solid black;
   display: flex;
   justify-content: space-between;
-  width: 900px;
+  /* width: 900px; */
 
   @media (max-width: 1200px) {
-    width: 600px;
+    /* width: 600px; */
+    justify-content: center;
   }
 `;
 
 const AlgorithmsListContainer= styled.div`
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
-  width: 600px;
+  /* width: 600px; */
 `;
 
 const Algorithm = styled.div`
+  /* border: 1px solid black; */
   border-radius: 5px;
-  width: 600px;
+  /* width: 600px; */
   color: #cad1dc;
   background: #FFFFFF;
   box-shadow: 0 3px 0px 0px;
@@ -86,16 +97,18 @@ const Algorithm = styled.div`
 `;
 
 const ActivityLog = styled.div`
+  /* border: 1px solid black; */
   border-radius: 5px;
-  height: 435px;
-  width: 230px;
+  /* height: 435px; */
+  /* width: 230px; */
   background: #FFFFFF;
   border-radius: 5px;
-  margin: 0 0 30px 0;
+  margin: 0 0 30px 20px;
   color: #cad1dc;
   box-shadow: 0 3px 0px 0px;
   padding: 15px;
   font-size: 20px;
+  max-height: 435px;
 
   p {
     color: black;
@@ -118,6 +131,7 @@ const ActivityLog = styled.div`
 `;
 
 const CreateButton = styled.button`
+  /* border: 1px solid black; */
   background: #ff9b7d;
   color: white;
   padding: 10px;
@@ -134,9 +148,14 @@ const CreateButton = styled.button`
   &:hover {
     background: #c37058;
   }
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const LogEntries = styled.div`
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
 
