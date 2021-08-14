@@ -7,72 +7,57 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router'
 
 const PageContainer= styled.div`
-  border: 10px solid black;
-  /* align-items: center;
-  display: flex;
-  flex-direction: column; */
   padding: 0 20px 20px;
   margin: auto;
-  max-width: 1100px;
+  max-width: 950px;
 `;
 
 const OuterTitleContainer = styled.div`
-  border: 1px solid black;
   display: flex;
   margin: 0;
-  /* height: 80px; */
-  /* width: 900px; */
 
   @media (max-width: 1200px) {
-    /* width: 600px; */
     justify-content: center;
   }
 `;
 
 const InnerTitleContainer = styled.div`
-  /* border: 1px solid black; */
-  margin: auto 0;
+  margin: 0 0 20px 0;
   font-size: 40px;
   font-weight: 400;
-  /* width: 600px; */
   display: flex;
   justify-content: space-between;
-  height: 80px;
   align-items: center;
 
   h1 {
     font-size: 34px;
   }
+
+  @media (min-width: 1200px) {
+    min-width: 600px;
+  }
 `;
 
 const AlgorithmsContainer= styled.div`
-  border: 1px solid black;
   display: flex;
   justify-content: space-between;
-  /* width: 900px; */
 
   @media (max-width: 1200px) {
-    /* width: 600px; */
     justify-content: center;
   }
 `;
 
 const AlgorithmsListContainer= styled.div`
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
-  /* width: 600px; */
 `;
 
 const Algorithm = styled.div`
-  /* border: 1px solid black; */
   border-radius: 5px;
-  /* width: 600px; */
   color: #cad1dc;
   background: #FFFFFF;
   box-shadow: 0 3px 0px 0px;
-  height: 64px;
-  padding: 0px 20px;
+  padding: 0 100px 0 20px;
   margin: 0 0 25px 0;
   display: flex;
   justify-content: space-between;
@@ -91,16 +76,17 @@ const Algorithm = styled.div`
       background: #e1e5ea;
   }
 
-  @media (max-width: 890px) {
-    height: 100px;
+  @media (min-width: 1200px) {
+    min-width: 600px;
+  }
+
+  @media (max-width: 400px){
+    padding: 0 20px 0 20px;
   }
 `;
 
 const ActivityLog = styled.div`
-  /* border: 1px solid black; */
   border-radius: 5px;
-  /* height: 435px; */
-  /* width: 230px; */
   background: #FFFFFF;
   border-radius: 5px;
   margin: 0 0 30px 20px;
@@ -131,7 +117,6 @@ const ActivityLog = styled.div`
 `;
 
 const CreateButton = styled.button`
-  /* border: 1px solid black; */
   background: #ff9b7d;
   color: white;
   padding: 10px;
@@ -155,7 +140,6 @@ const CreateButton = styled.button`
 `;
 
 const LogEntries = styled.div`
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
 
@@ -279,7 +263,6 @@ export default function Algorithms() {
                 <Link href={link} key={i} style={{color: 'black'}}>
                   <Algorithm key={i}>
                     <p>{algorithm.name}</p>
-                    <p>{algorithm.description}</p>
                   </Algorithm>
                 </Link>
               )
