@@ -8,6 +8,10 @@ const SignInContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 0 25px 0 0;
+
+  @media (max-width: 400px){
+    display: none;
+  }
 `;
 
 const ProfileContainer = styled.div`
