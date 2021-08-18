@@ -39,6 +39,10 @@ const InnerTitleContainer = styled.div`
       font-size: 34px;
     }
   }
+
+  @media (min-width: 900px) {
+    min-width: 600px;
+  }
 `;
 
 const AlgorithmsContainer= styled.div`
@@ -79,7 +83,7 @@ const Algorithm = styled.div`
       background: #e1e5ea;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 900px) {
     min-width: 600px;
   }
 
