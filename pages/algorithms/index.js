@@ -22,19 +22,22 @@ const OuterTitleContainer = styled.div`
 `;
 
 const InnerTitleContainer = styled.div`
-  margin: 0 0 20px 0;
-  font-size: 40px;
-  font-weight: 400;
+  margin: 15px 0 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   h1 {
-    font-size: 34px;
+    font-size: 30px;
   }
 
   @media (min-width: 1200px) {
     min-width: 600px;
+    margin: 0 0 20px 0;
+
+    h1 {
+      font-size: 34px;
+    }
   }
 `;
 
@@ -82,6 +85,10 @@ const Algorithm = styled.div`
 
   @media (max-width: 400px){
     padding: 0 20px 0 20px;
+
+    p {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -120,7 +127,6 @@ const CreateButton = styled.button`
   background: #ff9b7d;
   color: white;
   padding: 10px;
-  min-width: 100px;
   text-align: center;
   border-radius: 3.5px;
   font-size: 12px;
@@ -129,13 +135,11 @@ const CreateButton = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   height: 35px;
+  width: 35px;
+  margin: 0px 0 0 30px;
 
   &:hover {
     background: #c37058;
-  }
-
-  @media (max-width: 1200px) {
-    display: none;
   }
 `;
 
@@ -252,7 +256,7 @@ export default function Algorithms() {
         <OuterTitleContainer>
           <InnerTitleContainer>
             <h1>Algorithms</h1>
-            <CreateButton onClick={OpenCreateModal}>Create</CreateButton>
+            <CreateButton onClick={OpenCreateModal}>+</CreateButton>
           </InnerTitleContainer>
         </OuterTitleContainer>
         <AlgorithmsContainer>
